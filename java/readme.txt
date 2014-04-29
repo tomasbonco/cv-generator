@@ -1,0 +1,1 @@
+There will be Java application. This file is temporary.

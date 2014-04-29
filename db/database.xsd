@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ *  database.xsd - XML Schema for database.xml
+ *
+ *  This file is a part of the CV generator - School project
+ *  for PB138 (Masaryk University, Brno, Czech republic)
+ *
+ *  Copyright (C) 2014  Daniel Minarik <daniel.minarik@gmail.com>
+-->
+
+<xsd:schema version="1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+
+    <!--ROOT ELEMENT =================================================================================================-->
+    <xsd:element name="data" type="typeData">
+        <xsd:unique name="cvUnique">
+            <xsd:selector xpath="./cv"/>
+            <xsd:field xpath="@id"/>
+        </xsd:unique>
+    </xsd:element>
+
+    <!--COMPLEX TYPES ================================================================================================-->
+    <!--DATA element type-->
+    <xsd:complexType name="typeData">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="cv" type="typeCv"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--CV element type-->
+    <xsd:complexType name="typeCv">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="firstname" type="typeNonEmptyStringNoWhite"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="lastname" type="typeNonEmptyStringNoWhite"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="address" type="typeAddress"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="phones" type="typePhones"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="emails" type="typeEmails"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="employment" type="typeEmployment"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="education" type="typeEducation"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="languages" type="typeLanguages"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="skills" type="typeSkills"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hobbies" type="typeHobbies"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="typePositiveInteger" use="required"/>
+    </xsd:complexType>
+    <!--ADDRESS element type-->
+    <xsd:complexType name="typeAddress">
+        <xsd:all>
+            <xsd:element minOccurs="1" maxOccurs="1" name="street" type="typeNonEmptyString"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="city" type="typeNonEmptyString"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="postal" type="xsd:integer"/>
+        </xsd:all>
+    </xsd:complexType>
+    <!--PHONES element type-->
+    <xsd:complexType name="typePhones">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="phone" type="typePhone"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--EMAILS element type-->
+    <xsd:complexType name="typeEmails">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="email" type="typeEmail"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--EMPLOYMENT element type-->
+    <xsd:complexType name="typeEmployment">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="emp" type="typeEmp"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--EMP element type-->
+    <xsd:complexType name="typeEmp">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
+                <xsd:attribute name="position" type="typeNonEmptyString" use="required"/>
+                <xsd:attribute name="from" type="typeMyDate" use="required"/>
+                <xsd:attribute name="to" type="typeMyDate" use="required"/>
+                <xsd:attribute name="current" type="typeCurrent" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <!--EDUCATION element type-->
+    <xsd:complexType name="typeEducation">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="edu" type="typeEdu"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--EDU element type-->
+    <xsd:complexType name="typeEdu">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
+                <xsd:attribute name="field-of-study" type="xsd:string" use="required"/>
+                <xsd:attribute name="from" type="typeMyDate" use="required"/>
+                <xsd:attribute name="to" type="typeMyDate" use="required"/>
+                <xsd:attribute name="current" type="typeCurrent" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <!--LANGUAGES element type-->
+    <xsd:complexType name="typeLanguages">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="lang" type="typeLang"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--LANG element type-->
+    <xsd:complexType name="typeLang">
+        <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
+        <xsd:attribute name="level" type="typeLangLevel" use="required"/>
+    </xsd:complexType>
+    <!--SKILLS element type-->
+    <xsd:complexType name="typeSkills">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="sk" type="typeSk"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--SK element type-->
+    <xsd:complexType name="typeSk">
+        <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
+        <xsd:attribute name="level" type="typeLevel" use="required"/>
+    </xsd:complexType>
+    <!--HOBBIES element type-->
+    <xsd:complexType name="typeHobbies">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="hob" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--SIMPLE TYPES =================================================================================================-->
+    <!--CV id type-->
+    <xsd:simpleType name="typePositiveInteger">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--FIRSTNAME, LASTNAME type-->
+    <xsd:simpleType name="typeNonEmptyStringNoWhite">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\S+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--STREET, CITY type-->
+    <xsd:simpleType name="typeNonEmptyString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[\s\S]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--PHONE type-->
+    <xsd:simpleType name="typePhone">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[\d +]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--EMAIL type-->
+    <xsd:simpleType name="typeEmail">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\S+@\S+\.\S+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--EMP @ from, to type-->
+    <xsd:simpleType name="typeMyDate">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([1-9][0-9]{3}-[0-9]{2})|"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--EMP @ current type-->
+    <xsd:simpleType name="typeCurrent">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[01]"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--LANG @ level type-->
+    <xsd:simpleType name="typeLangLevel">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([Nn]ative|[Bb]asic|[Ii]ntermediate|[Aa]dvanced)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--SK @ level type-->
+    <xsd:simpleType name="typeLevel">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([Bb]asic|[Ii]ntermediate|[Aa]dvanced)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

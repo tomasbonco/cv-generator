@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ *  simple_database.xsd - XML Schema for simple_database.xml
+ *
+ *  This file is a part of the CV generator - School project
+ *  for PB138 (Masaryk University, Brno, Czech republic)
+ *
+ *  Copyright (C) 2014  Daniel Minarik <daniel.minarik@gmail.com>
+-->
+
+<xsd:schema version="1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+    <!--Root element-->
+    <xsd:element name="data" type="typeData">
+        <xsd:unique name="cvUnique">
+            <xsd:selector xpath="./cv"/>
+            <xsd:field xpath="@id"/>
+        </xsd:unique>
+    </xsd:element>
+    <!--Root element type definition-->
+    <xsd:complexType name="typeData">
+       <xsd:sequence>
+           <xsd:element minOccurs="0" maxOccurs="unbounded" name="cv" type="typeCv"/>
+       </xsd:sequence>
+    </xsd:complexType>
+    <!--CV element type definition-->
+    <xsd:complexType name="typeCv">
+       <xsd:sequence>
+           <xsd:element minOccurs="1" maxOccurs="1" name="firstname" type="xsd:string"/>
+       </xsd:sequence>
+       <xsd:attribute name="id" type="typePositiveInteger" use="required"/>
+    </xsd:complexType>
+    <!--CV id type definition-->
+    <xsd:simpleType name="typePositiveInteger">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

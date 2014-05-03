@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simple_database.xsd">
+<cv id="0">
+<firstname>tom</firstname>
+</cv>
+</data>

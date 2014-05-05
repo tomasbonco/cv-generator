@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  *  xml_to_tex.xslt - Transformation schema for one CV from database.xml
- *  Transforms XML fraction to TeX using "ecv" template from http://ctan.org
+ *  Transforms XML document to TeX using "ecv" template from http://ctan.org
  *
  *  This file is a part of the CV generator - School project
  *  for PB138 (Masaryk University, Brno, Czech republic)

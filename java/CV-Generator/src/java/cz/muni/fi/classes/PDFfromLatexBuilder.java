@@ -63,6 +63,10 @@ public class PDFfromLatexBuilder {
             pb.start();
             System.out.println("Output:" + latexFile.getAbsolutePath()+".pdf");
             
+            //delete intermediate .dvi file
+            File dvi = new File(latexFile.getAbsolutePath()+".dvi");
+            dvi.delete();
+            
             //set path of resulting pdf
             result = latexFile.getAbsolutePath()+".pdf";
         } catch (IOException ex) {

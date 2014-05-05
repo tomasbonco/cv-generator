@@ -21,11 +21,6 @@ public class PDFfromLatexBuilder {
     
     String pathToLatexBin;
     
-    
-    public PDFfromLatexBuilder(){
-        pathToLatexBin = "";
-    }
-    
     /**
     * @param    latexPath   Path to latex binaries as latex and dvipdfm
     */

@@ -12,18 +12,7 @@
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             elementFormDefault="qualified">
     <!--Root element-->
-    <xsd:element name="data" type="typeData">
-        <xsd:unique name="cvUnique">
-            <xsd:selector xpath="./cv"/>
-            <xsd:field xpath="@id"/>
-        </xsd:unique>
-    </xsd:element>
-    <!--Root element type definition-->
-    <xsd:complexType name="typeData">
-       <xsd:sequence>
-           <xsd:element minOccurs="0" maxOccurs="unbounded" name="cv" type="typeCv"/>
-       </xsd:sequence>
-    </xsd:complexType>
+    <xsd:element name="cv" type="typeCv"/>
     <!--CV element type definition-->
     <xsd:complexType name="typeCv">
        <xsd:sequence>
@@ -33,8 +22,14 @@
     </xsd:complexType>
     <!--CV id type definition-->
     <xsd:simpleType name="typePositiveInteger">
-        <xsd:restriction base="xsd:string">
+        <xsd:restriction base="xsd:integer">
             <xsd:pattern value="[0-9]+"/>
         </xsd:restriction>
     </xsd:simpleType>
+    <xsd:simpleType name="typeNonEmptyString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[\s\S]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
 </xsd:schema>

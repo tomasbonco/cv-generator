@@ -34,7 +34,6 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="skills" type="typeSkills"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="hobbies" type="typeHobbies"/>
         </xsd:sequence>
-        <xsd:attribute name="id" type="typePositiveInteger" use="required"/>
     </xsd:complexType>
     <!--ADDRESS element type-->
     <xsd:complexType name="typeAddress">
@@ -128,12 +127,6 @@
     </xsd:complexType>
 
     <!--SIMPLE TYPES =================================================================================================-->
-    <!--CV id type-->
-    <xsd:simpleType name="typePositiveInteger">
-        <xsd:restriction base="xsd:integer">
-            <xsd:pattern value="[0-9]+"/>
-        </xsd:restriction>
-    </xsd:simpleType>
     <!--PRETITLE, POSTTITLE type-->
     <xsd:simpleType name="typeTitle">
         <xsd:restriction base="xsd:string">

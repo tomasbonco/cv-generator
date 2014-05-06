@@ -18,14 +18,7 @@
        <xsd:sequence>
            <xsd:element minOccurs="1" maxOccurs="1" name="firstname" type="xsd:string"/>
        </xsd:sequence>
-       <xsd:attribute name="id" type="typePositiveInteger" use="required"/>
     </xsd:complexType>
-    <!--CV id type definition-->
-    <xsd:simpleType name="typePositiveInteger">
-        <xsd:restriction base="xsd:integer">
-            <xsd:pattern value="[0-9]+"/>
-        </xsd:restriction>
-    </xsd:simpleType>
     <xsd:simpleType name="typeNonEmptyString">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[\s\S]+"/>

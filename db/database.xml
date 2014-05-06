@@ -9,11 +9,7 @@
  *  Copyright (C) 2014  Daniel Minarik <daniel.minarik@gmail.com>
 -->
 
-<!--
-<cv> is root element
-@id is required - positive number, should be unique for all cv
--->
-<cv id="0">
+<cv>
     <!--mandatory element, string containing only a-zA-Z, dot, space, can be empty-->
     <pretitle>Bc.</pretitle>
     <!--mandatory element, non-empty string, white spaces not allowed-->

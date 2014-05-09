@@ -1,0 +1,135 @@
+@import "mixins";
+@import "common";
+
+@peridot: #1abc9c;
+@peridot-dark: #16a085;
+@emerald: #2ecc71;
+@emerald-dark: #27ae60;
+@topas: #3498db;
+@topas-dark: #2980b9;
+@amethyst: #9b59b6;
+@amethyst-dark: #8e44ad;
+@saphyre: #34495e;
+@saphyre-dark: #2c3e50;
+@citrine: #f1c40f;
+@citrine-dark: #f39c12;
+@carot: #e67e22;
+@carot-dark: #d35400;
+@ruby: #e74c3c;
+@ruby-dark: #c0392b;
+@diamond: #ecf0f1;
+@diamond-dark: #bdc3c7;
+@maroh: #95a5a6;
+@maroh-dark: #7f8c8d;
+
+@primary-font: 'Roboto';
+@font-size-base: 18px;
+
+
+body
+{
+	margin: 0;
+	padding: 0;
+
+	font: 300 @font-size-base @primary-font;
+
+	padding-bottom: 100px;
+}
+
+
+h1
+{
+	padding-top: 5px;
+	margin-top: 100px;
+	border-top: 7px solid @emerald-dark;
+
+	color: #333;
+
+	font-weight: 900;
+	font-size: 26px;
+
+	text-transform: uppercase;
+}
+
+label
+{
+	margin-top: 10px;
+	font-weight: 400;
+}
+
+input
+{
+	.transition( all 0.3s ease-in-out );
+
+	margin: 5px 0;
+	padding: 5px;
+
+	width: 100%;
+
+	outline: none;
+
+	border: 2px solid @diamond;
+	border-radius: 3px;
+
+	&:focus
+	{
+		border-color: @topas;
+	}
+}
+
+select
+{
+	.transition( all 0.3s ease-in-out );
+
+	margin: 5px 0;
+	padding: 5px;
+
+	width: 100%;
+
+	outline: none;
+
+	border: 2px solid @diamond;
+	border-radius: 3px;
+
+	&:focus
+	{
+		border-color: @topas;
+	}
+}
+
+.error
+{
+	margin-bottom: 5px;
+	padding: 2px 5px;
+	border-radius: 2px;
+	background: #fef5f4;
+	color: #ac120a;
+}
+
+.info
+{
+	padding-top: 10px;
+}
+
+.delimiter
+{
+	margin-top: 100px;
+	margin-bottom: 25px;
+
+	padding-top: 20px;
+	
+	border-top: 7px solid @topas-dark;
+}
+
+
+/* Bootstrap hacks */
+
+.row.no-gap
+{
+	margin: 0;
+
+	.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12
+	{
+		padding: 0;
+	}
+}

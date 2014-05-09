@@ -12,9 +12,9 @@
 <cv>
     <!--mandatory element, string containing only a-zA-Z, dot, space, can be empty-->
     <pretitle>Bc.</pretitle>
-    <!--mandatory element, non-empty string, white spaces not allowed-->
+    <!--mandatory element, non-empty string-->
     <firstname>Arnold</firstname>
-    <!--mandatory element, non-empty string, white spaces not allowed-->
+    <!--mandatory element, non-empty string-->
     <lastname>Novak</lastname>
     <!--mandatory element, string containing only a-zA-Z, dot, space, can be empty-->
     <posttitle>cSc.</posttitle>

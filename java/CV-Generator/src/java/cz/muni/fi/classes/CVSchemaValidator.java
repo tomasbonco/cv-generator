@@ -44,6 +44,7 @@ public class CVSchemaValidator {
         try {
             Document doc = docBuilder.parse(new File(xmlFilename));
         } catch (SAXException ex) {
+            System.out.println(ex.getMessage());
             return (ex.getMessage());
         } 
         return null;

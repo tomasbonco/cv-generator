@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  *  simple_database.xml - Simple database for testing purposes
- *  Every CV element contains only firstname
+ *  CV element contains only firstname
  *
  *  This file is a part of the CV generator - School project
  *  for PB138 (Masaryk University, Brno, Czech republic)
@@ -9,18 +9,6 @@
  *  Copyright (C) 2014  Daniel Minarik <daniel.minarik@gmail.com>
 -->
 
-<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="simple_database.xsd">
-    <cv id="0">
-        <firstname>Daniel</firstname>
-    </cv>
-    <cv id="1">
-        <firstname>Tomas</firstname>
-    </cv>
-    <cv id="2">
-        <firstname>Tom</firstname>
-    </cv>
-    <cv id="3">
-        <firstname>Honza</firstname>
-    </cv>
-</data>
+<cv>
+    <firstname>Daniel</firstname>
+</cv>

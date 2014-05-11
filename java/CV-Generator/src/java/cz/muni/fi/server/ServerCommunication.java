@@ -8,9 +8,14 @@ package cz.muni.fi.server;
 
 
 import cz.muni.fi.classes.CVSchemaValidator;
-import cz.muni.fi.classes.XMLCreator;
+import cz.muni.fi.classes.PersonalInfo;
+import cz.muni.fi.classes.XMLRecordCreator;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,44 +26,67 @@ import javax.xml.xpath.XPathExpressionException;
 import org.xml.sax.SAXException;
 
 /**
- * For this moment, this web servlet just loads a name from an html page, saves
- * that name to the xml document (if exists) or generate new xml document with
- * that name. Then that new or changed xml document is validated and if there 
- * is no problem, web servlet send to the server answer that everything is correct
- * and show that response on html page.
+ * For this moment, this web servlet loads almost all neccessary information
+ * from an html page, saves
+ * that information to the xml document (generate new xml document with
+ * that information). Then that new xml document is validated.
  * 
  * @author Tomáš Šmíd <smid.thomas@gmail.com>
  */
 @WebServlet("/create-new-profile")
 public class ServerCommunication extends HttpServlet {
     
-   
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {  
+   /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         
-        String name = request.getParameter("name"); //getting a name from html page
-        try{            
-            XMLCreator xmlc = new XMLCreator(new File("C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator\\data.xml"));            
-            CVSchemaValidator nv = new CVSchemaValidator("C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator\\simple_database.xsd");
-            
-            xmlc.generateXML(name); //name is added to the xml document
-            
-            //xml document is checked if is valid
-            if(nv.validate("C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator\\data.xml") == null){
-                response.sendRedirect("success.jsp"); //send "successful" response if there is everything correct
-            }else{
-                response.sendRedirect("index.html"); //send "origin" html page for name entry
+        PersonalInfo person = new PersonalInfo(request.getParameterMap());        
+        
+        XMLRecordCreator xmlrc = new XMLRecordCreator();
+        CVSchemaValidator sv = new CVSchemaValidator("database.xsd");
+        xmlrc.generateXML(person);
+        try {
+            if(sv.validate(person.getFirstname()+"_"+person.getLastname()+".xml")==null){
+                System.out.println("Vse ok.");
             }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        } catch (SAXException ex) {
-            System.out.println(ex.getMessage());
-        } catch (ParserConfigurationException ex) {
-            System.out.println(ex.getMessage());
-        } catch (XPathExpressionException ex) {
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 }

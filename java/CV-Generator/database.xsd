@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- *  database.xsd - XML Schema for database.xml
+ *  database.xsd - Validation schema for xml file containing
+ *  data of one user in root element CV
  *
  *  This file is a part of the CV generator - School project
  *  for PB138 (Masaryk University, Brno, Czech republic)
@@ -13,35 +14,26 @@
             elementFormDefault="qualified">
 
     <!--ROOT ELEMENT =================================================================================================-->
-    <xsd:element name="data" type="typeData">
-        <xsd:unique name="cvUnique">
-            <xsd:selector xpath="./cv"/>
-            <xsd:field xpath="@id"/>
-        </xsd:unique>
-    </xsd:element>
+    <xsd:element name="cv" type="typeCv"/>
 
     <!--COMPLEX TYPES ================================================================================================-->
-    <!--DATA element type-->
-    <xsd:complexType name="typeData">
-        <xsd:sequence>
-            <xsd:element minOccurs="0" maxOccurs="unbounded" name="cv" type="typeCv"/>
-        </xsd:sequence>
-    </xsd:complexType>
     <!--CV element type-->
     <xsd:complexType name="typeCv">
         <xsd:sequence>
-            <xsd:element minOccurs="1" maxOccurs="1" name="firstname" type="typeNonEmptyStringNoWhite"/>
-            <xsd:element minOccurs="1" maxOccurs="1" name="lastname" type="typeNonEmptyStringNoWhite"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="pretitle" type="typeTitle"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="firstname" type="typeNonEmptyString"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="lastname" type="typeNonEmptyString"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="posttitle" type="typeTitle"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="address" type="typeAddress"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="phones" type="typePhones"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="emails" type="typeEmails"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="employment" type="typeEmployment"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="education" type="typeEducation"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="languages" type="typeLanguages"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="certificates" type="typeCertificates"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="skills" type="typeSkills"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="hobbies" type="typeHobbies"/>
         </xsd:sequence>
-        <xsd:attribute name="id" type="typePositiveInteger" use="required"/>
     </xsd:complexType>
     <!--ADDRESS element type-->
     <xsd:complexType name="typeAddress">
@@ -110,6 +102,12 @@
         <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
         <xsd:attribute name="level" type="typeLangLevel" use="required"/>
     </xsd:complexType>
+    <!--CERTIFICATES element type-->
+    <xsd:complexType name="typeCertificates">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="cer" type="typeNonEmptyString"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <!--SKILLS element type-->
     <xsd:complexType name="typeSkills">
         <xsd:sequence>
@@ -129,10 +127,10 @@
     </xsd:complexType>
 
     <!--SIMPLE TYPES =================================================================================================-->
-    <!--CV id type-->
-    <xsd:simpleType name="typePositiveInteger">
+    <!--PRETITLE, POSTTITLE type-->
+    <xsd:simpleType name="typeTitle">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="[0-9]+"/>
+            <xsd:pattern value="[a-zA-Z. ]*"/>
         </xsd:restriction>
     </xsd:simpleType>
     <!--FIRSTNAME, LASTNAME type-->
@@ -150,7 +148,7 @@
     <!--PHONE type-->
     <xsd:simpleType name="typePhone">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="[\d +]+"/>
+            <xsd:pattern value="[\d +-/\\\(\)]+"/>
         </xsd:restriction>
     </xsd:simpleType>
     <!--EMAIL type-->
@@ -167,7 +165,7 @@
     </xsd:simpleType>
     <!--EMP @ current type-->
     <xsd:simpleType name="typeCurrent">
-        <xsd:restriction base="xsd:string">
+        <xsd:restriction base="xsd:integer">
             <xsd:pattern value="[01]"/>
         </xsd:restriction>
     </xsd:simpleType>

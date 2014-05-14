@@ -13,8 +13,9 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
- *
- * @author Tomáš Šmíd
+ * Java class for validating any xml document.
+ * 
+ * @author Tomas Smid <smid.thomas at gmail.com>
  */
 public class CVSchemaValidator {
     
@@ -31,7 +32,6 @@ public class CVSchemaValidator {
             
             dbf.setSchema(schema);
             docBuilder = dbf.newDocumentBuilder();
-            docBuilder.setErrorHandler(new ValidationErrorsHandler());
         } catch (SAXException ex) {
             System.err.println(ex.getMessage());
             System.exit(-1);
@@ -40,6 +40,14 @@ public class CVSchemaValidator {
         }
     }
     
+    /**
+     * This method determines whether a xml document is valid or not.
+     * 
+     * @param xmlFilename   input xml file (document) which will be validated
+     * @return  null if xml file is valid,
+     *          error message otherwise
+     * @throws IOException if there does not manage to open the xml file
+     */
     public String validate(String xmlFilename) throws IOException{
         try {
             Document doc = docBuilder.parse(new File(xmlFilename));

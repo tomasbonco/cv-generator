@@ -22,10 +22,10 @@ import org.w3c.dom.Element;
 
 /**
  * Java class for creating a new xml document with personal information
- * which is captured from html page (form) and which is hold in variable 
+ * which is captured from html page (form) and which is kept in variable 
  * person. 
  * 
- * @author Tomáš Šmíd <smid.thomas@gmail.com>
+ * @author Tomas Smid <smid.thomas at gmail.com>
  */
 public class XMLRecordCreator {
     
@@ -39,8 +39,16 @@ public class XMLRecordCreator {
         } catch (ParserConfigurationException ex) {
             System.out.println(ex.getMessage());
         }
-    }
+    }    
     
+    /**
+     * This method is intended for generating a new xml document with personal
+     * information of person who filled in the html form and wants to create
+     * a new curriculum vitae.
+     * 
+     * @param person    variable in which is kept all neccessary information about
+     *                  person who wants to create a new cv
+     */
     public void generateXML(PersonalInfo person){
         Document doc = this.docBuilder.newDocument();
         
@@ -54,8 +62,8 @@ public class XMLRecordCreator {
         createAddressTag(doc,rootElement,person);
         createPhonesOrEmailsTag(doc,rootElement,person,"phone");
         createPhonesOrEmailsTag(doc,rootElement,person,"email");
-        //createEmploymentTag(doc,rootElement,person);
-        //createEducationTag(doc,rootElement,person);
+        createEmploymentTag(doc,rootElement,person);
+        createEducationTag(doc,rootElement,person);
         createLangOrSkillTag(doc,rootElement,person,"languages");
         createCerOrHobTag(doc,rootElement,person,"certificates");
         createLangOrSkillTag(doc,rootElement,person,"skills");
@@ -86,7 +94,7 @@ public class XMLRecordCreator {
         cityElem.setTextContent(person.getCity());
         
         Element postalElem = doc.createElement("postal");
-        addressElem.appendChild(postalElem);
+        addressElem.appendChild(postalElem);        
         postalElem.setTextContent(person.getPostal());
     }
     
@@ -120,17 +128,21 @@ public class XMLRecordCreator {
         if("certificates".equals(name)){
             if(person.getCertificates() != null){
                 for(int i = 0; i < person.getCertificates().size(); i++){
-                    Element elem = doc.createElement("cer");
-                    element.appendChild(elem);
-                    elem.setTextContent(person.getCertificates().get(i));
+                    if(!person.getCertificates().get(i).equals("")){
+                        Element elem = doc.createElement("cer");
+                        element.appendChild(elem);
+                        elem.setTextContent(person.getCertificates().get(i));
+                    }
                 }
             }
         }else{
             if(person.getHobbies() != null){
                 for(int i = 0; i < person.getHobbies().size(); i++){
-                    Element elem = doc.createElement("hob");
-                    element.appendChild(elem);
-                    elem.setTextContent(person.getHobbies().get(i));
+                    if(!person.getHobbies().get(i).equals("")){
+                        Element elem = doc.createElement("hob");
+                        element.appendChild(elem);
+                        elem.setTextContent(person.getHobbies().get(i));
+                    }
                 }
             }
         }
@@ -138,40 +150,63 @@ public class XMLRecordCreator {
     
     private void createEmploymentTag(Document doc, Element rootElement,
                                      PersonalInfo person){
-        
+        int k;
         Element emplElement = doc.createElement("employment");
         rootElement.appendChild(emplElement);
         
-        if(person.getEmployments() != null){
-            for(Integer i: person.getEmployments().keySet()){
+        for(Integer i: person.getEmployments().keySet()){
+            k = 0;
+            for(int j = 0; j < 4; j++){
+                if(person.getEmployments().get(i).get(j) == null && 
+                        person.getEmployments().get(i).get(j).equals("")){
+                    k++;
+                }
+            }
+            if(k < 4){
                 Element elem = doc.createElement("emp");
                 emplElement.appendChild(elem);
-                elem.setAttribute("name", person.getEmployments().get(i)[0]);
-                elem.setAttribute("position", person.getEmployments().get(i)[1]);
-                elem.setAttribute("from", person.getEmployments().get(i)[2]);
-                elem.setAttribute("to", person.getEmployments().get(i)[3]);
-                elem.setAttribute("current", person.getEmployments().get(i)[4]);
-                elem.setTextContent(person.getEmployments().get(i)[5]);
+                elem.setAttribute("name", person.getEmployments().get(i).get(0));
+                elem.setAttribute("position", person.getEmployments().get(i).get(1));
+                elem.setAttribute("from", person.getEmployments().get(i).get(2));
+                elem.setAttribute("to", person.getEmployments().get(i).get(3));
+                if(person.getEmployments().get(i).get(3).equals("")){
+                    elem.setAttribute("current", "1");
+                }else{
+                    elem.setAttribute("current", "0");
+                }
             }
         }
+        
     }
     
     private void createEducationTag(Document doc, Element rootElement,
                                      PersonalInfo person){
         
+        int k;
         Element eduElement = doc.createElement("education");
         rootElement.appendChild(eduElement);
         
-        if(person.getEmployments() != null){
-            for(Integer i: person.getEducation().keySet()){
+        
+        for(Integer i: person.getEducation().keySet()){
+            k = 0;
+            for(int j = 0; j < 4; j++){
+                if(person.getEducation().get(i).get(j) == null && 
+                        person.getEducation().get(i).get(j).equals("")){
+                    k++;
+                }
+            }
+            if(k < 4){
                 Element elem = doc.createElement("edu");
                 eduElement.appendChild(elem);
-                elem.setAttribute("name", person.getEducation().get(i)[0]);
-                elem.setAttribute("field-of-study", person.getEducation().get(i)[1]);
-                elem.setAttribute("from", person.getEducation().get(i)[2]);
-                elem.setAttribute("to", person.getEducation().get(i)[3]);
-                elem.setAttribute("current", person.getEducation().get(i)[4]);
-                elem.setTextContent(person.getEducation().get(i)[5]);
+                elem.setAttribute("name", person.getEducation().get(i).get(0));
+                elem.setAttribute("field-of-study", person.getEducation().get(i).get(1));
+                elem.setAttribute("from", person.getEducation().get(i).get(2));
+                elem.setAttribute("to", person.getEducation().get(i).get(3));
+                if(person.getEducation().get(i).get(3).equals("")){
+                    elem.setAttribute("current", "1");
+                }else{
+                    elem.setAttribute("current", "0");
+                }
             }
         }
     }
@@ -184,7 +219,7 @@ public class XMLRecordCreator {
         
         if("languages".equals(name)){
             for(String s: person.getLanguages().keySet()){
-                if(s != null){
+                if(s != null && !s.equals("")){
                     Element elem = doc.createElement("lang");
                     element.appendChild(elem);
                     elem.setAttribute("name", s);
@@ -193,7 +228,7 @@ public class XMLRecordCreator {
             }
         }else{
             for(String s: person.getSkills().keySet()){
-                if(s != null){
+                if(s != null && !s.equals("")){
                     Element elem = doc.createElement("sk");
                     element.appendChild(elem);
                     elem.setAttribute("name", s);

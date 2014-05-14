@@ -10,28 +10,19 @@ package cz.muni.fi.server;
 import cz.muni.fi.classes.CVSchemaValidator;
 import cz.muni.fi.classes.PersonalInfo;
 import cz.muni.fi.classes.XMLRecordCreator;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPathExpressionException;
-import org.xml.sax.SAXException;
 
 /**
- * For this moment, this web servlet loads almost all neccessary information
- * from an html page, saves
- * that information to the xml document (generate new xml document with
- * that information). Then that new xml document is validated.
+ * This servlet is used for loading information about a person, who want to create
+ * a new curriculum vitae and who fills needed information in a html form, and 
+ * creating needed xml document which is important for further process.
  * 
- * @author Tomáš Šmíd <smid.thomas@gmail.com>
+ * @author Tomas Smid <smid.thomas at gmail.com>
  */
 @WebServlet("/create-new-profile")
 public class ServerCommunication extends HttpServlet {
@@ -49,9 +40,9 @@ public class ServerCommunication extends HttpServlet {
             throws ServletException, IOException {
         
         PersonalInfo person = new PersonalInfo(request.getParameterMap());        
-        
         XMLRecordCreator xmlrc = new XMLRecordCreator();
         CVSchemaValidator sv = new CVSchemaValidator("database.xsd");
+        
         xmlrc.generateXML(person);
         try {
             if(sv.validate(person.getFirstname()+"_"+person.getLastname()+".xml")==null){

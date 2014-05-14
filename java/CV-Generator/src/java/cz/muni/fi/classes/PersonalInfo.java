@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package cz.muni.fi.classes;
 
@@ -13,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Java class thanks to it is hold all information about person
- * who creates new cv. Information is captured from html page (form).
+ * Java class for keeping all information (captured from html page) about a person 
+ * who wants to create his own curriculum vitae.
  * 
- * @author Tomáš Šmíd <smid.thomas@gmail.com>
+ * @author Tomas Smid <smid.thomas at gmail.com>
  */
 public class PersonalInfo {
     
@@ -29,8 +25,8 @@ public class PersonalInfo {
     private String postal = null;
     private List<String> phones = null;
     private List<String> emails = null;
-    private Map<Integer, String[]> employments = null;
-    private Map<Integer, String[]> education = null;
+    private Map<Integer, List<String>> employments = null;
+    private Map<Integer, List<String>> education = null;
     private Map<String, String> languages = null;
     private List<String> certificates = null;
     private Map<String, String> skills = null;
@@ -54,14 +50,26 @@ public class PersonalInfo {
             this.emails = setListValue(htmlScheduleData, "email");
             this.certificates = setListValue(htmlScheduleData, "certificate");
             this.hobbies = setListValue(htmlScheduleData, "hobby");
-            /*this.employments = setEmplEduValues(htmlScheduleData, "c_");
-            this.education = setEmplEduValues(htmlScheduleData, "e_");*/
+            this.employments = setEmplEduValues(htmlScheduleData, "c_");
+            this.education = setEmplEduValues(htmlScheduleData, "e_");
             this.languages = setLangOrSkillValue(htmlScheduleData, "l_language", "l_level");
             this.skills = setLangOrSkillValue(htmlScheduleData, "s_skill", "s_level");
             this.password = setStringValue(htmlScheduleData,"password");
         }
     }
     
+    /**
+     * This method is used for correct setting of any string values
+     * (e.g. firstname, lastname, street).
+     * 
+     * @param htmlScheduleData  input map with all information captured from
+     *                          html page from which are gained particular data
+     *                          for each particular string variable
+     * @param key   says which value will be tried to gain from
+     *              input data which are in htmlScheduleData
+     * @return  requested string if present in htmlScheduleData,
+     *          otherwise null
+     */
     private String setStringValue(Map<String, String[]> htmlScheduleData, String key){
         if (htmlScheduleData.containsKey(key)) {
             return htmlScheduleData.get(key)[0];
@@ -69,6 +77,19 @@ public class PersonalInfo {
         return null;
     }
     
+    /**
+     * This method is used for correct setting of any list which is formed by
+     * string values. So it is used for values which can repeatedly appear on
+     * html page - cv form (e.g. phones, e-mails).
+     * 
+     * @param htmlScheduleData  input map with all information captured from
+     *                          html page from which are gained particular data
+     *                          for each particular string variable
+     * @param partOfKey part of value (key) which is supposed to gain from
+     *                  htmlScheduleData, this value is completed to the right form
+     *                  and then searched in htmlScheduleData
+     * @return  list of requested particular string values if present in htmlScheduleData
+     */
     private List<String> setListValue(Map<String, String[]> htmlScheduleData, String partOfKey){
         String[] values;
         List<String> dataList = new ArrayList<String>();
@@ -82,6 +103,21 @@ public class PersonalInfo {
         return dataList;
     }
     
+    /**
+     * This method is used for correct setting of languages and skills of person
+     * who the information is connected to.
+     * 
+     * @param htmlScheduleData  input map with all information captured from
+     *                          html page from which are gained particular data
+     *                          for each particular string variable
+     * @param partOfKey part of key word which is related to languages and which
+     *                  will be completed to the right form a then searched in
+     *                  htmlScheduleData
+     * @param partOfKey2    part of key word which is related to levels of language
+     *                      skill or another skill
+     * @return  map of languages or skills together with level of language skill if present
+     *          in htmlScheduleData
+     */
     private Map<String, String> setLangOrSkillValue(Map<String, String[]> htmlScheduleData, 
                                                     String partOfKey, String partOfKey2){
         
@@ -107,6 +143,74 @@ public class PersonalInfo {
         return dataMap;
     }
     
+    /**
+     * This method is used for correct setting of employment and education
+     * values.
+     * 
+     * @param htmlScheduleData  input map with all information captured from
+     *                          html page from which are gained particular data
+     *                          for each particular string variable
+     * @param partOfKey part of key word which will be completed to the right form
+     *                  and searched in htmlScheduleData
+     * @return  map of employment or education information
+     */
+    private Map<Integer, List<String>> setEmplEduValues (Map<String, String[]> htmlScheduleData, String partOfKey){
+        
+        String[] keys = {(partOfKey+"name"),(partOfKey+"position"),
+                           (partOfKey+"since"),(partOfKey+"to")};
+        Map<Integer, List<String>> dataMap = new HashMap<Integer, List<String>>();
+        List<String> names = getEmplEduPosOrNames(htmlScheduleData,keys[0]);
+        List<String> positions = getEmplEduPosOrNames(htmlScheduleData,keys[1]);
+        List<String> since = getEmplEduSinceOrTo(htmlScheduleData, keys[2]);
+        List<String> to = getEmplEduSinceOrTo(htmlScheduleData, keys[3]);
+        
+        for(int i = 0; i < names.size(); i++){
+            List<String> temp = new ArrayList<String>();
+            temp.add(names.get(i));
+            temp.add(positions.get(i));
+            temp.add(since.get(i));
+            temp.add(to.get(i));
+            dataMap.put(i,temp);
+        }
+        return dataMap;
+        
+    }
+    
+    private List<String> getEmplEduPosOrNames(Map<String, String[]> htmlScheduleData,
+                                              String partOfKey){
+        
+        List<String> retVal = new ArrayList<String>();
+        String val1 = partOfKey+"[0]";
+        String anotherValues = partOfKey+"[]";
+        
+        if(htmlScheduleData.containsKey(val1)){
+            retVal.addAll(Arrays.asList(htmlScheduleData.get(val1)));
+        }
+        if(htmlScheduleData.containsKey(anotherValues)){
+            retVal.addAll(Arrays.asList(htmlScheduleData.get(anotherValues)));
+        }
+        return retVal;
+    }
+    
+    private List<String> getEmplEduSinceOrTo(Map<String, String[]> htmlScheduleData,
+                                             String partOfKey){
+        
+        List<String> retVal = new ArrayList<String>();
+        int con = 0;
+        int k = 0;
+        String key;
+        
+        while(con == 0){
+            con = 1;
+            key = partOfKey+"["+k+"]";
+            if(htmlScheduleData.containsKey(key)){
+                retVal.addAll(Arrays.asList(htmlScheduleData.get(key)));
+                con = 0;
+                k++;
+            }
+        }
+        return retVal;
+    }
     
     public String getPretitle(){
         return this.pretitle;
@@ -144,11 +248,11 @@ public class PersonalInfo {
         return this.emails;
     }
 
-    public Map<Integer, String[]> getEmployments() {
+    public Map<Integer, List<String>> getEmployments() {
         return employments;
     }
 
-    public Map<Integer, String[]> getEducation() {
+    public Map<Integer, List<String>> getEducation() {
         return education;
     }
 
@@ -208,11 +312,11 @@ public class PersonalInfo {
         this.emails = emails;
     }
 
-    public void setEmployments(Map<Integer, String[]> employments) {
+    public void setEmployments(Map<Integer, List<String>> employments) {
         this.employments = employments;
     }
 
-    public void setEducation(Map<Integer, String[]> education) {
+    public void setEducation(Map<Integer, List<String>> education) {
         this.education = education;
     }
 

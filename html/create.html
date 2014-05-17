@@ -43,11 +43,11 @@
             <div>
               <label class="block">Phone number*</label>
               <input type="text" name="phone[0]" ng-model="_phone[0]" ng-pattern="/^[\+]{0,1}[0-9\(\) ]+$/" ng-required="true" placeholder="e.g. +420 123 456 789">
-              <div ng-show="valid('phone[0]').invalid.required" class="error">Potrebné vyplniť!</div>
-              <div ng-show="valid('phone[0]').invalid.pattern" class="error">Iba číslice, medzery, znak plus a zátvorky!</div>
+              <div ng-show="valid('phone[0]').invalid.required" class="error">This is required!</div>
+              <div ng-show="valid('phone[0]').invalid.pattern" class="error">Only numbers, spaces, brackets and sign plus are allowed!</div>
               <div ng-repeat="phone in phones">
                 <input type="text" name="phone[{{$index + 1}}]" ng-model="_phone[$index+1]" ng-pattern="/^[\+]{0,1}[0-9\(\) ]+$/" placeholder="e.g. +420 123 456 789">
-                <div ng-hide="valid('phone[{{$index + 1}}]').valid" class="error">Iba číslice, medzery, znak plus a zátvorky!</div>
+                <div ng-hide="valid('phone[{{$index + 1}}]').valid" class="error">Only numbers, spaces, brackets and sign plus are allowed!</div>
               </div><a ng-click="phones.push([])" class="btn pull-right">Add phone number</a>
             </div>
             <div class="both"></div>

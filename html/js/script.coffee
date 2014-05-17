@@ -1,4 +1,8 @@
+# Angular
+
 ctrl = ( $scope )->
+
+    # "Hack" allowing Angular validate array of elements with same name (name[]).
 
     $scope.valid = ( field )->
 
@@ -10,6 +14,10 @@ ctrl = ( $scope )->
         result.invalid.pattern = hasClass form.elements[ field ], 'ng-invalid-pattern'
     
         return result
+
+
+# Source: http://youmightnotneedjquery.com/
+# Checks if DOM element has specified class
 
 hasClass = ( el, className )->
 

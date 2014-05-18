@@ -19,7 +19,8 @@
 
     <xsl:template match="cv">
         <!--Document beginning-->
-        <xsl:text>\documentclass[english]{ecv}
+        <xsl:text>
+\documentclass[english]{ecv}
 \ecvName{</xsl:text>
         <!--Document name-->
         <xsl:value-of select="lastname"/>
@@ -28,23 +29,14 @@
         <xsl:text>}
 \begin{document}
 \begin{ecv}
-\ecvEPR{Name}   {</xsl:text>
+\ecvEPR{Name}   {\textsc{</xsl:text>
 
-        <!--Pre title-->
-        <xsl:if test="pretitle/text() != ''">
-            <xsl:value-of select="pretitle"/>
-            <xsl:text> </xsl:text>
-        </xsl:if>        
         <!--Last name-->
-        <xsl:value-of select="firstname"/>
-        <xsl:text> </xsl:text>
-        <!--First name-->
         <xsl:value-of select="lastname"/>
-        <!--Post title-->
-        <xsl:if test="posttitle/text() != ''">
-            <xsl:text>, </xsl:text>
-            <xsl:value-of select="posttitle"/>
-        </xsl:if>
+        <xsl:text>}, </xsl:text>
+        
+        <!--First name-->
+        <xsl:value-of select="firstname"/>
         <xsl:text>}</xsl:text>
         
         <!--Address-->
@@ -97,6 +89,9 @@
                 <xsl:text>}}
 \ecvENR{Position} {</xsl:text>
                 <xsl:value-of select="@position"/>
+                <xsl:text>}
+\ecvENR{Description} {</xsl:text>
+                <xsl:value-of select="text()"/>
                 <xsl:text>}</xsl:text>
             </xsl:for-each>
         </xsl:if>
@@ -121,6 +116,10 @@
                     <xsl:value-of select="@field-of-study"/>
                     <xsl:text>}</xsl:text>
                 </xsl:if>
+                <xsl:text>
+\ecvENR{Description} {</xsl:text>
+                <xsl:value-of select="text()"/>
+                <xsl:text>}</xsl:text>
             </xsl:for-each>
         </xsl:if>
         
@@ -187,21 +186,9 @@
         </xsl:if>
         
         <!--Abilities-->
-        <xsl:if test="skills[count(*) &gt; 0] or hobbies[count(*) &gt; 0] or certificates[count(*) &gt; 0]">
+        <xsl:if test="skills[count(*) &gt; 0] or hobbies[count(*) &gt; 0]">
             <xsl:text>
 \ecvBSec{\hypertarget{hypertarget:\ecvAbilities}{\ecvAbilities}}</xsl:text>
-            <!--Certificates-->
-            <xsl:if test="certificates[count(*) &gt; 0]">
-                <xsl:text>
-\ecvBEBSub{Certificates} {</xsl:text>                
-                <xsl:for-each select="certificates/cer">
-                    <xsl:value-of select="text()"/>
-                    <xsl:if test="position() != last()">
-                        <xsl:text>\ecvNewLine </xsl:text>
-                    </xsl:if>
-                </xsl:for-each>
-                <xsl:text>}</xsl:text>
-            </xsl:if>
             <!--Skills-->
             <xsl:if test="skills[count(*) &gt; 0]">
                 <xsl:text>
@@ -240,8 +227,7 @@
         <xsl:value-of select="lastname"/>
         <xsl:text>}{Brno}
 \end{document}
-\end
-    </xsl:text>
+\end</xsl:text>
 
     </xsl:template>
 

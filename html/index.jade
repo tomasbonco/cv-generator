@@ -1,0 +1,99 @@
+doctype 5
+html(lang="en", ng-app)
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+
+		link(rel="stylesheet", href="css/bootstrap.min.css")
+		link(rel="stylesheet", href="css/font-awesome.css")
+		link(rel="stylesheet", href="css/style.css")
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:400,300,600,900&subset=latin,latin-ext', type='text/css')
+
+	body#page-index
+
+		section.full#welcome.v-center
+
+			.wrapper
+
+				.wrapper-rs
+
+					.container-fluid
+
+						h1 Create your resumé
+
+						p It takes a minute, it's simple, nice and you will love it!
+
+						a.btn(href="create.html") Create my CV
+
+					div.next-page
+
+						i.icon-chevron-down
+
+
+
+		section.full.text-content#features
+
+			.wrapper-rs
+
+				h1 Benefits
+
+				img(src="img/pdf.png")
+
+				h2 Export in PDF
+				p Export your CV to the PDF, so you can send it to your future employer.
+
+				img(src="img/time.png")
+
+				h2 Update your CV later
+				p You can update your CV later with generatad hash and password.
+
+
+		section.full.text-content#team
+
+			.wrapper-rs
+
+				h1 Meet the team
+
+				.container
+
+					.row
+
+						.col-md-3.col-sm-6.col-xs-12
+
+							div.img.tb
+							div.name Tomáš Bončo
+							p Created design, HTML, CSS and Javascript part. He loves cookies and steaks.
+
+
+						.col-md-3.col-sm-6.col-xs-12
+
+							div.img
+							div.name Tomáš Šmid
+							p Responsible for Java part. He loves ...
+
+						.clearfix.visible-sm
+
+						.col-md-3.col-sm-6.col-xs-12
+
+							div.img
+							div.name Bc. Jan Polišenský
+							p Responsible for Java part. He loves ...
+
+						.col-md-3.col-sm-6.col-xs-12
+
+							div.img
+							div.name Daniel Minárik
+							p With his long history as XML-database architect, it wasn't a discussion who will create database and transformations.
+
+						.clearfix
+
+		footer
+
+			| &copy;2014 Authors. All Rights Reserved.
+			br
+			a(href="https://github.com/tomasbonco/cv-generator") View on Github
+
+
+
+		script( src="js/jquery.min.js" )
+		script( src="js/script.js" )

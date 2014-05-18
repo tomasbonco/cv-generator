@@ -6,7 +6,7 @@ html(lang="en", ng-app)
 		link(rel="stylesheet", href="css/style.css")
 		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:400,300,600,900&subset=latin,latin-ext', type='text/css')
 
-	body
+	body#page-create
 
 		form(name="form", ng-controller="ctrl", action="", method="POST")
 
@@ -51,13 +51,13 @@ html(lang="en", ng-app)
 						div
 							label.block Phone number*
 							input(type="text", name="phone[0]", ng-model="_phone[0]", ng-pattern="/^[\\+]{0,1}[0-9\\(\\) ]+$/", ng-required="true", placeholder="e.g. +420 123 456 789")
-							.error(ng-show="valid('phone[0]').invalid.required") Potrebné vyplniť!
-							.error(ng-show="valid('phone[0]').invalid.pattern") Iba číslice, medzery, znak plus a zátvorky!
+							.error(ng-show="valid('phone[0]').invalid.required") This is required!
+							.error(ng-show="valid('phone[0]').invalid.pattern") Only numbers, spaces, brackets and sign plus are allowed!
 
 							div(ng-repeat="phone in phones")
 							
 								input(type="text", name="phone[{{$index + 1}}]", ng-model="_phone[$index+1]", ng-pattern="/^[\\+]{0,1}[0-9\\(\\) ]+$/", placeholder="e.g. +420 123 456 789")
-								.error(ng-hide="valid('phone[{{$index + 1}}]').valid") Iba číslice, medzery, znak plus a zátvorky!
+								.error(ng-hide="valid('phone[{{$index + 1}}]').valid") Only numbers, spaces, brackets and sign plus are allowed!
 
 
 							a.btn.pull-right(ng-click="phones.push([])") Add phone number
@@ -356,4 +356,6 @@ html(lang="en", ng-app)
 
 
 		script(src="js/angular.min.js")
+		script(src="js/jquery.min.js")
+
 		script(src="js/script.js")

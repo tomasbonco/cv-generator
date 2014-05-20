@@ -129,10 +129,10 @@
             <xsl:text>
 \ecvBSec{\hypertarget{hypertarget:\ecvLanguages}{\ecvLanguages}}</xsl:text>
             <!--Native-->
-            <xsl:if test="languages[count(lang[@level='native']) &gt; 0]">
+            <xsl:if test="languages[count(lang[@level='native speaker']) &gt; 0]">
                 <xsl:text>
-\ecvERSub{Native}{</xsl:text>                
-                <xsl:for-each select="languages/lang[@level='native']">
+\ecvERSub{Native speaker}{</xsl:text>                
+                <xsl:for-each select="languages/lang[@level='native speaker']">
                     <xsl:text>\ecvBold{</xsl:text>
                     <xsl:value-of select="@name"/>
                     <xsl:text>}</xsl:text>

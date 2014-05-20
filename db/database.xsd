@@ -163,13 +163,13 @@
     <!--LANG @ level type-->
     <xsd:simpleType name="typeLangLevel">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="([Nn]ative|[Bb]asic|[Ii]ntermediate|[Aa]dvanced)"/>
+            <xsd:pattern value="(native speaker|basic|intermediate|advanced)"/>
         </xsd:restriction>
     </xsd:simpleType>
     <!--SK @ level type-->
     <xsd:simpleType name="typeLevel">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="([Bb]asic|[Ii]ntermediate|[Aa]dvanced)"/>
+            <xsd:pattern value="(basic|intermediate|advanced)"/>
         </xsd:restriction>
     </xsd:simpleType>
 

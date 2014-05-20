@@ -85,9 +85,9 @@
     <languages>
         <!--
         @name is required - non-empty string
-        @level is required - only words {native|basic|intermediate|advanced}, first letter is case insensitive
+        @level is required - only words {Native speaker|Basic|Intermediate|Advanced}
         -->
-        <lang name="Czech" level="native"/>
+        <lang name="Czech" level="native speaker"/>
         <lang name="Sanish" level="basic"/>
         <lang name="German" level="intermediate"/>
         <lang name="English" level="advanced"/>
@@ -108,7 +108,7 @@
     <skills>
         <!--
         @name is required - non-empty string
-        @level is required - only words {basic|intermediate|advanced}, first letter is case insensitive
+        @level is required - only words {Basic|Intermediate|Advanced}, first letter is case insensitive
         -->
         <sk name="Leadership skills" level="basic"/>
         <sk name="Internet Explorer" level="intermediate"/>

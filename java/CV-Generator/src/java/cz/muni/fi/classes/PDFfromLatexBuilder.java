@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.tomcat.jni.Time;
 
 /**
  * Class used for creating PDF output from Latex file by using pdflatex. Pdflatex must be installed.

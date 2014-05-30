@@ -10,6 +10,7 @@ package cz.muni.fi.server;
 import cz.muni.fi.classes.PDFfromLatexBuilder;
 import cz.muni.fi.classes.PersonalInfo;
 import cz.muni.fi.classes.XMLRecordCreator;
+import cz.muni.fi.classes.XSLTransformer;
 import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -46,9 +47,11 @@ public class ServerCommunication extends HttpServlet {
         XMLRecordCreator xmlrc = new XMLRecordCreator();
         
         if(xmlrc.generateXML(person) == true){
-            File xmlFile = new File("database",person.getDateHash());            
+            XSLTransformer xslt = new XSLTransformer();
+            xslt.transformToTex("xml_to_tex.xslt", person.getDateHash()+".xml", person.getDateHash()+".tex");
+            File texFile = new File("pdf_database",person.getDateHash());
             PDFfromLatexBuilder pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
-            pflb.createPDF(xmlFile);
+            pflb.createPDF(texFile);
         }else{
             System.out.println("XML document its name is "+person.getDateHash()+".xml has not been created => it was not valid. ");
         }        

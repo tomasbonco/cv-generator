@@ -54,7 +54,7 @@ public class PDFfromLatexBuilder {
             //start latex to generate .dvi file
             pb.command(dviParams);
             System.out.println("Starting:" + pb.command());
-            pb.start().waitFor();
+            pb.start().waitFor();            
             System.out.println("Output:" + latexFile.getAbsolutePath()+".dvi");
             
             //start dvipdfm to generate .pdf
@@ -68,7 +68,7 @@ public class PDFfromLatexBuilder {
         } catch (IOException ex) {
             Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Can not create PDF file from " + latexFile.getName() + ".tex due to error: " + ex.getMessage());
-        } catch (InterruptedException ex) {
+        }catch (InterruptedException ex) {
             Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
         

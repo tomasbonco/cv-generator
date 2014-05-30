@@ -2,8 +2,11 @@
 
 package cz.muni.fi.classes;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +34,8 @@ public class PersonalInfo {
     private List<String> certificates = null;
     private Map<String, String> skills = null;
     private List<String> hobbies = null;
-    private String password = null;
+    private String passwordHash = null;
+    private String dateHash = null;
             
     public PersonalInfo(){
         this(null);
@@ -54,8 +58,9 @@ public class PersonalInfo {
             this.education = setEmplEduValues(htmlScheduleData, "e_");
             this.languages = setLangOrSkillValue(htmlScheduleData, "l_language", "l_level");
             this.skills = setLangOrSkillValue(htmlScheduleData, "s_skill", "s_level");
-            this.password = setStringValue(htmlScheduleData,"password");
+            this.passwordHash = getDataHash(setStringValue(htmlScheduleData,"password"));
         }
+        this.dateHash = getDataHash(new Date().toString());
     }
     
     /**
@@ -212,6 +217,28 @@ public class PersonalInfo {
         return retVal;
     }
     
+    private String getDataHash(String data){
+        MessageDigest md;
+        String dataHash = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            md.update(data.getBytes());
+            byte byteData[] = md.digest();
+            StringBuilder hexString = new StringBuilder();
+            for (int i = 0; i < byteData.length; i++) {
+                String hex = Integer.toHexString(0xff & byteData[i]);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+                dataHash = hexString.toString();
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("Time hash (no such algorithm) error: "+ex.getMessage());
+        }
+        return dataHash.substring(0, 12);
+    }
+    
     public String getPretitle(){
         return this.pretitle;
     }
@@ -272,8 +299,12 @@ public class PersonalInfo {
         return this.hobbies;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public String getDateHash() {
+        return dateHash;
     }
 
     public void setPretitle(String pretitle) {
@@ -336,10 +367,13 @@ public class PersonalInfo {
         this.hobbies = hobbies;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
-    
+
+    public void setDateHash(String date) {
+        this.dateHash = getDataHash(date);
+    }
 }
     
     

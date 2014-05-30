@@ -7,9 +7,10 @@
 package cz.muni.fi.server;
 
 
-import cz.muni.fi.classes.CVSchemaValidator;
+import cz.muni.fi.classes.PDFfromLatexBuilder;
 import cz.muni.fi.classes.PersonalInfo;
 import cz.muni.fi.classes.XMLRecordCreator;
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,21 +37,22 @@ public class ServerCommunication extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @SuppressWarnings("empty-statement")
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setCharacterEncoding("UTF-8");
         PersonalInfo person = new PersonalInfo(request.getParameterMap());        
         XMLRecordCreator xmlrc = new XMLRecordCreator();
-        CVSchemaValidator sv = new CVSchemaValidator("database.xsd");
         
-        xmlrc.generateXML(person);
-        try {
-            if(sv.validate(person.getFirstname()+"_"+person.getLastname()+".xml")==null){
-                System.out.println("Vse ok.");
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+        if(xmlrc.generateXML(person) == true){
+            File xmlFile = new File("database",person.getDateHash());            
+            PDFfromLatexBuilder pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
+            pflb.createPDF(xmlFile);
+        }else{
+            System.out.println("XML document its name is "+person.getDateHash()+".xml has not been created => it was not valid. ");
+        }        
+        
     }
     
     /**

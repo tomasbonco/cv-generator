@@ -20,6 +20,7 @@
     <!--CV element type-->
     <xsd:complexType name="typeCv">
         <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="passwd" type="typeNonEmptyString"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="pretitle" type="typeTitle"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="firstname" type="typeNonEmptyString"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="lastname" type="typeNonEmptyString"/>
@@ -40,7 +41,7 @@
         <xsd:all>
             <xsd:element minOccurs="1" maxOccurs="1" name="street" type="typeNonEmptyString"/>
             <xsd:element minOccurs="1" maxOccurs="1" name="city" type="typeNonEmptyString"/>
-            <xsd:element minOccurs="1" maxOccurs="1" name="postal" type="xsd:integer"/>
+            <xsd:element minOccurs="1" maxOccurs="1" name="postal" type="typePostal"/>
         </xsd:all>
     </xsd:complexType>
     <!--PHONES element type-->
@@ -63,15 +64,10 @@
     </xsd:complexType>
     <!--EMP element type-->
     <xsd:complexType name="typeEmp">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string">
-                <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
-                <xsd:attribute name="position" type="typeNonEmptyString" use="required"/>
-                <xsd:attribute name="from" type="typeMyDate" use="required"/>
-                <xsd:attribute name="to" type="typeMyDate" use="required"/>
-                <xsd:attribute name="current" type="typeCurrent" use="required"/>
-            </xsd:extension>
-        </xsd:simpleContent>
+        <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
+        <xsd:attribute name="position" type="typeNonEmptyString" use="required"/>
+        <xsd:attribute name="from" type="typeMyDate" use="required"/>
+        <xsd:attribute name="to" type="typeMyDate" use="required"/>
     </xsd:complexType>
     <!--EDUCATION element type-->
     <xsd:complexType name="typeEducation">
@@ -81,15 +77,10 @@
     </xsd:complexType>
     <!--EDU element type-->
     <xsd:complexType name="typeEdu">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string">
-                <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
-                <xsd:attribute name="field-of-study" type="xsd:string" use="required"/>
-                <xsd:attribute name="from" type="typeMyDate" use="required"/>
-                <xsd:attribute name="to" type="typeMyDate" use="required"/>
-                <xsd:attribute name="current" type="typeCurrent" use="required"/>
-            </xsd:extension>
-        </xsd:simpleContent>
+        <xsd:attribute name="name" type="typeNonEmptyString" use="required"/>
+        <xsd:attribute name="field-of-study" type="xsd:string" use="required"/>
+        <xsd:attribute name="from" type="typeMyDate" use="required"/>
+        <xsd:attribute name="to" type="typeMyDate" use="required"/>
     </xsd:complexType>
     <!--LANGUAGES element type-->
     <xsd:complexType name="typeLanguages">
@@ -145,6 +136,12 @@
             <xsd:pattern value="[\s\S]+"/>
         </xsd:restriction>
     </xsd:simpleType>
+    <!--POSTAL type-->
+    <xsd:simpleType name="typePostal">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{3}[ ]?[0-9]{2}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
     <!--PHONE type-->
     <xsd:simpleType name="typePhone">
         <xsd:restriction base="xsd:string">
@@ -163,22 +160,16 @@
             <xsd:pattern value="([1-9][0-9]{3}-[0-9]{2})|"/>
         </xsd:restriction>
     </xsd:simpleType>
-    <!--EMP @ current type-->
-    <xsd:simpleType name="typeCurrent">
-        <xsd:restriction base="xsd:integer">
-            <xsd:pattern value="[01]"/>
-        </xsd:restriction>
-    </xsd:simpleType>
     <!--LANG @ level type-->
     <xsd:simpleType name="typeLangLevel">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="([Nn]ative|[Bb]asic|[Ii]ntermediate|[Aa]dvanced)"/>
+            <xsd:pattern value="(native speaker|basic|intermediate|advanced)"/>
         </xsd:restriction>
     </xsd:simpleType>
     <!--SK @ level type-->
     <xsd:simpleType name="typeLevel">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="([Bb]asic|[Ii]ntermediate|[Aa]dvanced)"/>
+            <xsd:pattern value="(basic|intermediate|advanced)"/>
         </xsd:restriction>
     </xsd:simpleType>
 

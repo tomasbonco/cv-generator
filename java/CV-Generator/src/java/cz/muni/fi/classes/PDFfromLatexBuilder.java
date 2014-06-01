@@ -54,25 +54,38 @@ public class PDFfromLatexBuilder {
             //start latex to generate .dvi file
             pb.command(dviParams);
             System.out.println("Starting:" + pb.command());
-            pb.start();
+            pb.start().waitFor();            
             System.out.println("Output:" + latexFile.getAbsolutePath()+".dvi");
             
             //start dvipdfm to generate .pdf
             pb.command(pdfParams);
             System.out.println("Starting:" + pb.command());
-            pb.start();
+            pb.start().waitFor();
             System.out.println("Output:" + latexFile.getAbsolutePath()+".pdf");
-            
-            //delete intermediate .dvi file
-            File dvi = new File(latexFile.getAbsolutePath()+".dvi");
-            dvi.delete();
             
             //set path of resulting pdf
             result = latexFile.getAbsolutePath()+".pdf";
         } catch (IOException ex) {
             Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Can not create PDF file from " + latexFile.getName() + ".tex due to error: " + ex.getMessage());
+        }catch (InterruptedException ex) {
+            Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+            //cleanup
+            //--------------------------------------
+
+            //delete intermediate .dvi file
+            File dvi = new File(latexFile.getAbsolutePath()+".dvi");
+            dvi.delete();
+            
+            //delete intermediate .aux file
+            File aux = new File(latexFile.getAbsolutePath()+".aux");
+            aux.delete();
+            
+            //delete intermediate .log file
+            File log = new File(latexFile.getAbsolutePath()+".log");
+            log.delete();
         
         return result;
     };
@@ -80,7 +93,7 @@ public class PDFfromLatexBuilder {
     /**
      * Example of using this class
      */
-    public void example(){
+    public static void example(){
         //File created only as path container. Path is same as tex source, but without extension
         File texFile = new File("C:\\Users\\Honza\\Disk Google\\Tex\\test");
         

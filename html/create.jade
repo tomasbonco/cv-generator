@@ -20,7 +20,7 @@ html(lang="en", ng-app)
 
 						div
 							label.block Prefix title
-							input(type="text", name="pretitle", ng-model="pretitle", ng-pattern="/^[a-zA-Z\\. ]*$/", placeholder="e.g. Ing.")
+							input(type="text", name="pretitle", ng-model="pretitle", ng-pattern="/^[a-zA-Z\\. ]*$/", placeholder="e.g. Ing.", ng-init="pretitle = 'Jozo'")
 							.error(ng-hide="form.pretitle.$valid") Only letters, dots and spaces are allowed!
 
 						div

@@ -1,0 +1,273 @@
+#page-read
+{
+	h1, h2
+	{
+		font-size: 42px;
+	}
+
+	#welcome
+	{
+		.v-center;
+
+		background: rgba(50, 54, 58, 0.9);
+		color: #fff;
+
+		.background
+		{
+			background-image: url(https://farm9.staticflickr.com/8152/7435718416_ba1f1d299f_k.jpg);
+		}
+
+		.row
+		{
+			margin-bottom: 40px;
+		}
+
+		.edit-cv
+		{
+			position: absolute;
+			
+			top: 50px;
+			right: 35px;
+
+			cursor: pointer;
+
+			.button
+			{
+				position: relative;
+				z-index: 100;
+
+				width: 50px;
+				height: 50px;
+				background: @ruby;
+
+				padding-top: 13px;
+				text-align: center;
+
+				border-radius: 50%;
+
+				float: left;
+			}
+			
+			form
+			{				
+				float: left;
+
+				input
+				{
+					.transition( all 0.3s ease-in-out );
+
+					margin-left: -45px;
+					padding: 13px;
+
+					padding-left: 60px;
+					width: 0;
+
+					outline: none;
+					border: none;
+					border-radius: 25px;
+
+					background: none;
+					background: rgba(0, 0, 0, 0.75);
+
+					color: #fff;
+				}
+			}
+
+			&:hover
+			{
+				form
+				{
+					input
+					{
+						width: 297px;
+					}
+				}
+			}
+		}
+	}
+
+	#employment
+	{
+		background: rgba( 230, 230, 230, 0.5 );
+
+		ul
+		{
+			margin-top: 10px;
+			margin-left: 5px;
+
+			padding-left: 23px;
+
+			border-left: 3px solid #479dda;
+
+			list-style: none;	
+
+			li
+			{
+				position: relative;
+
+				top: -7px;
+
+				margin-bottom: 20px;
+
+				.year
+				{
+					font-weight: bold;
+					color: #005997;
+				}
+
+				.company
+				{
+					font-weight: 600;
+					margin: 5px 0;
+				}
+
+				.position
+				{
+					margin: 0;
+					padding: 0;
+				}
+
+				&:before
+				{
+					position: absolute;
+					top: 7px;
+
+					left: -30px;
+					display: block;
+
+					width: 12px;
+					height: 12px;
+
+					border: 3px solid #479dda;
+					border-radius: 50%;
+
+					background: #fff;
+					content: "";
+				}
+			}
+
+			&.green
+			{
+				border-color: #399700;
+
+				li:before
+				{
+
+					border-color: #399700;
+				}
+
+				.year
+				{
+					color: #399700;
+				}
+			}
+		}
+	}
+
+	#languages
+	{
+
+		min-height: 400px;
+
+		ul.faces
+		{
+			list-style: none;
+
+			li
+			{
+				position: relative;
+				margin-bottom: 10px;
+
+				&:before
+				{
+					position: absolute;
+
+					left: -35px;
+					display: block;
+
+					width: 24px;
+					height: 24px;
+
+					background: url('../img/rating.png');
+					background-size: cover;
+					content: "";
+				}
+
+				&.advanced:before
+				{
+					background-position: -24px 0;
+				}
+
+				&.intermediate:before
+				{
+					background-position: -49px 0;
+				}
+
+				&.basic:before
+				{
+					background-position: -73px 0;
+				}
+			}
+		}
+	}
+
+	#skills
+	{
+		background: #faf8eb;
+		min-height: 400px;
+
+		ul.faces
+		{
+			list-style: none;
+
+			li
+			{
+				position: relative;
+				margin-bottom: 10px;
+
+				&:before
+				{
+					position: absolute;
+
+					left: -35px;
+					display: block;
+
+					width: 24px;
+					height: 24px;
+
+					background: url('../img/rating.png');
+					background-size: cover;
+					content: "";
+				}
+
+				&.advanced:before
+				{
+					background-position: -24px 0;
+				}
+
+				&.intermediate:before
+				{
+					background-position: -49px 0;
+				}
+
+				&.basic:before
+				{
+					background-position: -73px 0;
+				}
+			}
+		}
+	}
+	
+	footer
+	{
+		padding: 40px 60px;
+		text-align: center;
+		color: #b6bbbf;
+		background: #252a2e;
+
+		a
+		{
+			color: #5797c7;
+		}
+	}
+}

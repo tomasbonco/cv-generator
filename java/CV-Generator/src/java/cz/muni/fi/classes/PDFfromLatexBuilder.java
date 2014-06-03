@@ -6,10 +6,15 @@
 
 package cz.muni.fi.classes;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,28 +44,39 @@ public class PDFfromLatexBuilder {
         //set command for .tex to .dvi conversion
         List<String> dviParams = new ArrayList<String>();
         dviParams.add(pathToLatexBin + "latex");
-        dviParams.add(latexFile.getName());
+        dviParams.add(latexFile.getAbsolutePath());
         
         //set command for .dvi to .pdf conversion
         List<String> pdfParams = new ArrayList<String>();
         pdfParams.add(pathToLatexBin + "dvipdfm");
-        pdfParams.add(latexFile.getName());
+        pdfParams.add(latexFile.getAbsolutePath());
         
         ProcessBuilder pb = new ProcessBuilder();
         pb.directory(latexFile.getParentFile());
-        
+        pb.redirectErrorStream(true);
         
         try {
             //start latex to generate .dvi file
             pb.command(dviParams);
             System.out.println("Starting:" + pb.command());
-            pb.start().waitFor();            
+            Process dviProcess = pb.start();
+            dviProcess.waitFor(500, TimeUnit.MILLISECONDS);
+            BufferedReader reader = new BufferedReader (new InputStreamReader(dviProcess.getInputStream()));
+            String line;
+            while ((line = reader.readLine ()) != null) {
+                System.out.println ("Stdout: " + line);
+            }
             System.out.println("Output:" + latexFile.getAbsolutePath()+".dvi");
             
             //start dvipdfm to generate .pdf
             pb.command(pdfParams);
             System.out.println("Starting:" + pb.command());
-            pb.start().waitFor();
+            Process pdfProcess = pb.start();
+            pdfProcess.waitFor(500, TimeUnit.MILLISECONDS);
+            reader = new BufferedReader (new InputStreamReader(pdfProcess.getInputStream()));
+            while ((line = reader.readLine ()) != null) {
+                System.out.println ("Stdout: " + line);
+            }
             System.out.println("Output:" + latexFile.getAbsolutePath()+".pdf");
             
             //set path of resulting pdf
@@ -68,7 +84,7 @@ public class PDFfromLatexBuilder {
         } catch (IOException ex) {
             Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Can not create PDF file from " + latexFile.getName() + ".tex due to error: " + ex.getMessage());
-        }catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
         

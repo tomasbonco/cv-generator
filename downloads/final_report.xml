@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xml:id="final_report" xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <title>Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)</title>
+  <chapter xml:id="introduction">
+    <title>Úvod</title>
+    <para>CV generator umožňuje návštevníkovi webstránky vytvoriť si vlastný životopis (Curriculum Vitae), ktorý bude môcť neskôr zobraziť, upravovať, prípadne stiahnuť si PDF verziu životopisu.</para>
+  </chapter>
+  <chapter xml:id="database">
+     <section>
+       <title>XML Databáza, XML Schéma a XSLT Transformácia</title>
+       <para>Riešiteľ: Daniel Minárik</para>
+       <para>Úloha: Vytvoriť XML databázu spolu s validačnou schémou a zabezpečiť prevod XML dokumentu na TeX (kvôli následnej konverzii do PDF)</para>
+     </section>
+     <section>
+       <title>Riešenie úlohy</title>
+       <para>Mojou prvou úlohou bolo vytvoriť XML databázu, ktorá bude uchovávať všetky potrebné dáta užívateľov. Pôvodný plán bol použiť jeden XML súbor na uloženie dát všetkých užívateľov, neskôr sme sa však kvôli validácii a aj prehľadnosti rozhodli ukladať dáta jedného uživateľa do jedného XML súboru. To ynamená, že pre každého užívateľa existuje separátny XML dokument. XML súbor je pomenovaný podľa vygenerovaného reťazca - hash (viď ďalšie kapitoly). Obsahuje všetky údaje konkrétneho životopisu vrátane hesla v šifrovanej podobe.
+       </para>
+       <para>V ďalšej fáze som sa venoval tvorbe XML Schémy, ktorá slúži na zvalidovanie obsahu XML dokumentu. Schéma popisuje presnú šruktúru databázového súboru a je navrhnutá tak, aby vyhovovala základným požiadavkám, ktoré sú kladené na jednotlivé údaje životopisu, ale zároveň, aby ošetrila všetky neštandardné a nevalidné vstupy (vrátane násobného použitia údajov, ktoré sa môžu nachádzať v dokumente najviac jeden krát).
+       </para>
+       <para>Ďalšia časť mojej práce pozostávala z tvorby XSLT transformácie, ktorá má za úlohu previesť obsah XML dokumentu do formátu TeX. Ako štýl TeX dokumentu som zvolil triedu ECV – A fancy Curriculum Vitae class z webovej lokality http://ctan.org (The Comprehensive TeX Archive Network). Táto trieda poskytuje jednoduché prostredie pre vytvorenie tabuľkového životopisu, inšpirovaného európskym životopisom. Po úspešnej transformácii XML dokumentu na TeX dokument, nasleduje konverzia do PDF formátu (viď ďalšie kapitoly).
+       </para>
+     </section>
+  </chapter>
+  <chapter xml:id="frontend">
+     <section>
+       <title>Frontend</title>
+       <para>Riešiteľ: Tomáš Bončo</para>
+       <para>Úloha: Frontend</para>
+     </section>
+     <section>
+       <title>Riešenie úlohy</title>
+       <para>...</para>
+     </section>
+  </chapter>
+  <chapter xml:id="java_server1">
+     <section>
+       <title>Java server (part 1)</title>
+       <para>Řešitel: Tomáš Šmíd</para>
+       <para>Úloha: Java server</para>
+     </section>
+     <section>
+       <title>Řešení úlohy</title>
+       <para>...</para>
+     </section>
+  </chapter>
+  <chapter xml:id="java_server2">
+     <section>
+       <title>Java server (part 2)</title>
+       <para>Řešitel: Bc. Jan Polišenský</para>
+       <para>Úloha: Java server</para>
+     </section>
+     <section>
+       <title>Řešení úlohy</title>
+       <para>...</para>
+     </section>
+  </chapter>
+</book>

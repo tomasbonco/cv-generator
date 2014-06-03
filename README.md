@@ -10,6 +10,6 @@ Our task is to create webpage that allows visitors to create their Curriculum Vi
 
 # Team
 * Tomáš Bončo (https://github.com/tomasbonco) - front-end (HTML, CSS, JavaScript, design), team leader
-* Daniel Minárik (https://github.com/danielminarik) - XML database, XML -> LaTeX -> PDF conversion
+* Daniel Minárik (https://github.com/danielminarik) - XML database, Schema and Transformation
 * Jan Polišenský (https://github.com/Tsacek) - JAVA (server)
 * Tomáš Šmíd (https://github.com/TomasSmid) - JAVA (server)

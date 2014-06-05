@@ -390,13 +390,7 @@ section.text-content .wrapper-rs {
 #page-read #welcome .row {
   margin-bottom: 40px;
 }
-#page-read #welcome .edit-cv {
-  position: absolute;
-  top: 50px;
-  right: 35px;
-  cursor: pointer;
-}
-#page-read #welcome .edit-cv .button {
+#page-read #welcome .button {
   position: relative;
   z-index: 100;
   width: 50px;
@@ -406,6 +400,12 @@ section.text-content .wrapper-rs {
   text-align: center;
   border-radius: 50%;
   float: left;
+}
+#page-read #welcome .edit-cv {
+  position: absolute;
+  top: 50px;
+  right: 35px;
+  cursor: pointer;
 }
 #page-read #welcome .edit-cv form {
   float: left;
@@ -428,6 +428,47 @@ section.text-content .wrapper-rs {
 }
 #page-read #welcome .edit-cv:hover form input {
   width: 297px;
+}
+#page-read #welcome .download-pdf {
+  position: absolute;
+  top: 120px;
+  right: 35px;
+  cursor: pointer;
+}
+#page-read #welcome .download-pdf a {
+  color: inherit;
+  text-decoration: none;
+}
+#page-read #welcome .download-pdf .text-overflow {
+  float: left;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  margin-left: -45px;
+  padding: 13px;
+  padding-left: 60px;
+  width: 0;
+  border: none;
+  border-radius: 25px;
+  background: none;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  overflow: hidden;
+}
+#page-read #welcome .download-pdf .text-overflow .text {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 200px;
+  opacity: 0;
+}
+#page-read #welcome .download-pdf:hover .text-overflow {
+  width: 297px;
+}
+#page-read #welcome .download-pdf:hover .text-overflow .text {
+  opacity: 1;
 }
 #page-read #employment {
   background: rgba(230, 230, 230, 0.5);

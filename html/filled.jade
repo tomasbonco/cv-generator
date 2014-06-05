@@ -20,24 +20,24 @@ html(lang="en", ng-app)
 
 						div
 							label.block Prefix title
-							input(type="text", name="pretitle", ng-model="pretitle", ng-pattern="/^[a-zA-Z\\. ]*$/", placeholder="e.g. Ing.", ng-init="pretitle = ''")
+							input(type="text", name="pretitle", ng-model="pretitle", ng-pattern="/^[a-zA-Z\\. ]*$/", placeholder="e.g. Ing.", ng-init="pretitle = 'Ing.'")
 							.error(ng-hide="form.pretitle.$valid") Only letters, dots and spaces are allowed!
 
 						div
 							label.block Name*
-							input(type="text", name="name", ng-model="name", ng-required="true", placeholder="e.g. John.", ng-init="name = ''")
+							input(type="text", name="name", ng-model="name", ng-required="true", placeholder="e.g. John.", ng-init="name = 'Jonhy'")
 							.error(ng-hide="form.name.$valid") This is required!
 
 					.col-xs-6
 
 						div
 							label.block Sufix Title
-							input(type="text", name="posttitle", ng-model="posttitle", ng-pattern="/^[a-zA-Z\\. ]*$/", placeholder="e.g. CsC.", ng-init="posttitle = ''")
+							input(type="text", name="posttitle", ng-model="posttitle", ng-pattern="/^[a-zA-Z\\. ]*$/", placeholder="e.g. CsC.", ng-init="posttitle = 'CsC.'")
 							.error(ng-hide="form.posttitle.$valid") Only letters, dots and spaces are allowed!
 
 						div
 							label.block Surname*
-							input(type="text", name="surname", ng-model="surname", ng-required="true", placeholder="e.g. Smith", ng-init="surname = ''")
+							input(type="text", name="surname", ng-model="surname", ng-required="true", placeholder="e.g. Smith", ng-init="surname = 'Depp'")
 							.error(ng-hide="form.surname.$valid") This is required!
 
 				.both
@@ -46,7 +46,7 @@ html(lang="en", ng-app)
 
 				.row
 
-					.col-xs-6(ng-init ="phones = []; _phone = []")
+					.col-xs-6(ng-init ="phones = [ [], [] ]; _phone = [ '0988 02 19', '+420 7350 00 00' ]")
 
 						div
 							label.block Phone number*
@@ -66,21 +66,21 @@ html(lang="en", ng-app)
 
 						div
 							label.block Street*
-							input(type="text", name="street", ng-model="street", ng-required="true", placeholder="e.g. Bakery Street 63", ng-init="street = ''")
+							input(type="text", name="street", ng-model="street", ng-required="true", placeholder="e.g. Bakery Street 63", ng-init="street = 'Five Avenue 33'")
 							.error(ng-hide="form.street.$valid") This is required!
 
 						div
 							label.block City*
-							input(type="text", name="city", ng-model="city", ng-required="true", placeholder="e.g. Boston", ng-init="city = ''")
+							input(type="text", name="city", ng-model="city", ng-required="true", placeholder="e.g. Boston", ng-init="city = 'Washington DC'")
 							.error(ng-hide="form.city.$valid") This is required!
 
 
 						div
 							label.block Postal Code*
-							input(type="text", name="postal", ng-model="postal" ng-required="true", placeholder="e.g. 405 32", ng-init="postal = ''")
+							input(type="text", name="postal", ng-model="postal" ng-required="true", placeholder="e.g. 405 32", ng-init="postal = '300199'")
 							.error(ng-hide="form.postal.$valid") This is required!
 
-					.col-xs-6(ng-init="emails = []; _email = []")
+					.col-xs-6(ng-init="emails = [ [], [] ]; _email = [ 'depp@johny.com', 'johny@depp.com' ]")
 
 						div
 							label.block Email*
@@ -96,7 +96,7 @@ html(lang="en", ng-app)
 
 				h1 Employment
 
-				.row(ng-init="companies = [ [] ]; _c_name = []; _c_position = []; _c_since = []; _c_to = []")
+				.row(ng-init="companies = [ [], [], [] ]; _c_name = [ 'Nokia', 'Audi' ]; _c_position = [ 'Senior Engineee', 'Pilot' ]; _c_since = [ '2010-10', '2011-10' ]; _c_to = ['2011-10', '2014-06']")
 
 					div.col-xs-4
 
@@ -143,7 +143,7 @@ html(lang="en", ng-app)
 
 				h1 Education
 
-				.row(ng-init="studies = [ [] ]; _e_name = []; _e_position = []; _e_since = []; _e_to = []")
+				.row(ng-init="studies = [ [], [], [] ]; _e_name = [ 'Masaryk University', 'Oxford' ]; _e_position = [ 'Chemistry', 'Actor' ]; _e_since = ['1999-10', '2010-03']; _e_to = [ '2003-10', '2014-01']")
 
 					div.col-xs-4
 
@@ -194,7 +194,7 @@ html(lang="en", ng-app)
 
 						h1 Languages
 							
-						.row(ng-init="languages = [ [] ]; _l_language = []; _l_level = ['basic']")
+						.row(ng-init="languages = [ [], [], [] ]; _l_language = [ 'English', 'Spanish' ]; _l_level = [ 'advanced', 'native speaker', 'basic']")
 
 							div.col-xs-8
 
@@ -228,7 +228,7 @@ html(lang="en", ng-app)
 
 						h1 Certificates
 
-						.row(ng-init="certificates = [ [] ]; _c_certificate = []")
+						.row(ng-init="certificates = [ [], [], [] ]; _c_certificate = [ 'Cisco CCNA', 'Microsoft Office' ]")
 
 							div.col-xs-12
 
@@ -241,7 +241,7 @@ html(lang="en", ng-app)
 
 				.row
 
-					.col-xs-6(ng-init="skills = [ [] ]; _s_skill = []; _s_level = ['basic']")
+					.col-xs-6(ng-init="skills = [ [], [], [] ]; _s_skill = [ 'Playing dead fish', 'Eating chocolate' ]; _s_level = ['intermediate', 'advanced', 'basic']")
 
 						h1 Skills
 
@@ -276,7 +276,7 @@ html(lang="en", ng-app)
 						a.btn.pull-right(ng-click="skills.push([]); _s_level[ _s_level.length ] = 'basic'") Add skill
 
 
-					.col-xs-6(ng-init="hobbies = [ [] ]; _hobbies = []")
+					.col-xs-6(ng-init="hobbies = [ [], [], [] ]; _hobbies = [ 'Ringing the bells', 'Playing music loud' ]")
 
 						h1 Hobby
 

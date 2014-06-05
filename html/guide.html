@@ -1,0 +1,19 @@
+<h1 id="ako-naplni-formul-r">Ako naplniť formulár</h1>
+<h2 id="z-kladn-elementy">Základné elementy</h2>
+<p>Základné elementy, sú tie, ktoré sa neopakujú (Meno, Priezvisko, Ulica). Každý z nich má atribút <code>ng-init</code>, do neho stačí vpísať hodnotu. Príklad pre meno.</p>
+<p><strong>Prázdny</strong>:</p>
+<pre><code class="lang-html">    &lt;input type=&quot;text&quot; name=&quot;name&quot; ng-model=&quot;name&quot; ng-required=&quot;true&quot; placeholder=&quot;e.g. John.&quot; ng-init=&quot;name = &#39;&#39;&quot;&gt;</code></pre>
+<p><strong>Naplnený</strong>:</p>
+<pre><code class="lang-html">    &lt;input type=&quot;text&quot; name=&quot;name&quot; ng-model=&quot;name&quot; ng-required=&quot;true&quot; placeholder=&quot;e.g. John.&quot; ng-init=&quot;name = &#39;Peter&#39;&quot;&gt;</code></pre>
+<h2 id="telef-n-a-email">Telefón a Email</h2>
+<p>Prvý telefón a prvý email sú povinné, tie zvyšn= už nie, preto sú v kóde rozdelené do povinnej a voliteľnej časti. Vypĺňanie je jednoduché (príklad pre Phone), hneď pod nadpisom Contact Information nájdi:</p>
+<pre><code class="lang-html">&lt;div ng-init=&quot;phones = []; _phone = []&quot; class=&quot;col-xs-6&quot;&gt;</code></pre>
+<p>Sú tam dve polia, <code>phones</code> je počítadlo a obsahuje iba hodnoty <code>[]</code>, <code>_phone</code> sú jednotlivé telefónne čísla. <strong>POZOR: Počítadlo ráta iba nepovinné telefónne čísla</strong>. To znamená, že prvé telefónne číslo v <code>_phones</code> sa namapuje na do povinného telefónneho čísla, a voliteľné telefónne čísla sa vytvoria podľa počtu <code>[]</code> v <code>phones</code>. Ak človek zadal 3 telefóone čísla, zobrazíš mu ich pomocou: <code>phones = [ [], [] ]; _phone = [ &#39;tf1&#39;, &#39;tf2&#39;, &#39;tf3&#39; ]</code>. Ak chceš zobraziť na konci ešte formulár pre zadanie nového čísla, pridáš ešte jeden <code>[]</code> do <code>phones</code>. Viď príklad v <code>filled.html</code>:</p>
+<pre><code class="lang-html">&lt;div ng-init=&quot;phones = [ [], [] ]; _phone = [ &#39;0988 02 19&#39;, &#39;+420 7350 00 00&#39; ]&quot; class=&quot;col-xs-6&quot;&gt;</code></pre>
+<h2 id="-kola-zamestnanie-jazyky-certifik-ty-schopnosti-a-hobby">Škola, Zamestnanie, Jazyky, Certifikáty, Schopnosti a Hobby</h2>
+<p>Fungujú podobne ako telefon ale s tým rozdielom, že nemajú povinnú časť. Z toho vyplýva, že počítadlo sa vzťahuje na reálny počet riadkov (a nie o jeden menej, než tomu bolo vyššie). Defaultne tam už je hodnota <code>[ [] ]</code>, aby sa užívateľovi zobrazil prvý - prázdny riadok (pri vytváraní dokumentu). Languages a Skills majú ešte prednastavenú hodnotu na <code>level</code>, na <code>basic</code>. To je hodnota, ktorá je priradená poslednému <code>[]</code> prvku. V prípade vytvárania dokumentu (príklad pre Language) vyzerá riadok takto:</p>
+<pre><code class="lang-html">&lt;div ng-init=&quot;languages = [ [] ]; _l_language = []; _l_level = [&#39;basic&#39;]&quot; class=&quot;row&quot;&gt;</code></pre>
+<p>Čo dáva zmysel, pretože, chceme zobraziť jeden riadok (<code>[ [] ]</code>), nechceme aby tam bolo nič napísané, ale chceme aby <code>level</code> bol automaticky nastavený na basic. Príklad vyplnených Languages, s prázdnym novým riadkom z <code>filled.html</code>:</p>
+<pre><code class="lang-html">&lt;div ng-init=&quot;languages = [ [], [], [] ]; _l_language = [ &#39;English&#39;, &#39;Spanish&#39; ]; _l_level = [ &#39;advanced&#39;, &#39;native speaker&#39;, &#39;basic&#39;]&quot; class=&quot;row&quot;&gt;</code></pre>
+<h2 id="heslo">Heslo</h2>
+<p>Sa nepredvypĺňa.</p>

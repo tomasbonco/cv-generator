@@ -253,6 +253,13 @@ section.text-content .wrapper-rs {
 #page-index #team .img.tb {
   background-image: url(../img/me.png);
 }
+#page-index #team .img.ts {
+  background-image: url(../img/tomas.png);
+  background-position: left center;
+}
+#page-index #team .img.dm {
+  background-image: url(../img/dano.png);
+}
 #page-index #team .name {
   font-size: 24px;
   font-weight: bold;

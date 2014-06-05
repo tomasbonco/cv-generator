@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  *  database.xml - Database for CV generator
- *  Contains data of one user
+ *  Contains data of one user, file name will be generated as hash
  *
  *  This file is a part of the CV generator - School project
  *  for PB138 (Masaryk University, Brno, Czech republic)

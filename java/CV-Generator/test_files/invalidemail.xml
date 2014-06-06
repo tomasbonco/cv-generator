@@ -47,7 +47,7 @@
     -->
     <emails>
         <!--email pattern: [non-empty string]@[non-empty string].[non-empty string]-->
-        <email>arnoldnovak@gmail.com</email>
+        <email>arnoldnovak(at)gmail.com</email>
         <email>arnoldnovak@fi.muni.cz</email>
     </emails>
     <!--
@@ -119,7 +119,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

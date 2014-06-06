@@ -61,7 +61,7 @@
         @from is required - year-month (XXXX-XX) or empty
         @to is required - year-month (XXXX-XX) or empty
         -->
-        <emp name="Google" position="Developer" from="2013-01" to="2014-03"/>
+        <emp name="Google" position="Developer" from="2013-01"/>
         <emp name="Apple" position="Manager" from="2014-04" to=""/>
     </employment>
     <!--
@@ -119,7 +119,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

@@ -17,7 +17,7 @@
     <!--mandatory element, non-empty string-->
     <firstname>Arnold</firstname>
     <!--mandatory element, non-empty string-->
-    <lastname>Novak</lastname>
+    <lastname></lastname>
     <!--mandatory element, string containing only a-zA-Z, dot, space, can be empty-->
     <posttitle>cSc.</posttitle>
     <!--
@@ -119,7 +119,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

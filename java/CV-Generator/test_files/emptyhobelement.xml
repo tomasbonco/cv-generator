@@ -119,8 +119,8 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
-        <hob>Eating</hob>
+        <!--some description text (no restrictions)-->
+        <hob></hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>
     </hobbies>

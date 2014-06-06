@@ -90,7 +90,7 @@
         <lang name="Czech" level="native speaker"/>
         <lang name="Sanish" level="basic"/>
         <lang name="German" level="intermediate"/>
-        <lang name="English" level="advanced"/>
+        <lang level="advanced"/>
     </languages>
     <!--
     <certificates> is mandatory element
@@ -119,7 +119,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

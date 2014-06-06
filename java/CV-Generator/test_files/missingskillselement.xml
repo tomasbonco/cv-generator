@@ -105,21 +105,12 @@
     <skills> is mandatory element
     does not have to contain <sk> element
     -->
-    <skills>
-        <!--
-        @name is required - non-empty string
-        @level is required - only words {Basic|Intermediate|Advanced}, first letter is case insensitive
-        -->
-        <sk name="Leadership skills" level="basic"/>
-        <sk name="Internet Explorer" level="intermediate"/>
-        <sk name="MS Office" level="advanced"/>
-    </skills>
     <!--
     <hobbies> is mandatory element
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

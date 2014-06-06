@@ -26,7 +26,7 @@
     -->
     <address>
         <!--mandatory element, non-empty string-->
-        <street>Hrncirska 123/4</street>
+        <street></street>
         <!--mandatory element, non-empty string-->
         <city>Brno</city>
         <!--mandatory element, non-empty numbers (optional space allowed on fourth position)-->
@@ -119,7 +119,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

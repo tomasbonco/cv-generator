@@ -30,7 +30,6 @@
         <!--mandatory element, non-empty string-->
         <city>Brno</city>
         <!--mandatory element, non-empty numbers (optional space allowed on fourth position)-->
-        <postal>001 01</postal>
     </address>
     <!--
     <phones> is mandatory element
@@ -119,7 +118,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

@@ -38,8 +38,6 @@
     -->
     <phones>
         <!--non-empty numbers, white spaces and "+" symbol are allowed-->
-        <phone>+420 123 456 789</phone>            
-        <phone>+420 123 456 789</phone>            
     </phones>
     <!--
     <emails> is mandatory element
@@ -119,7 +117,7 @@
     does not have to contain <hob> element
     -->
     <hobbies>
-        <!--some description text - non-empty string-->
+        <!--some description text (no restrictions)-->
         <hob>Eating</hob>
         <hob>Sleeping</hob>
         <hob>Waiting</hob>

@@ -118,10 +118,4 @@
     <hobbies> is mandatory element
     does not have to contain <hob> element
     -->
-    <hobbies>
-        <!--some description text - non-empty string-->
-        <hob>Eating</hob>
-        <hob>Sleeping</hob>
-        <hob>Waiting</hob>
-    </hobbies>
 </cv>

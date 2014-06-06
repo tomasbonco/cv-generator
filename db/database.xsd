@@ -113,7 +113,7 @@
     <!--HOBBIES element type-->
     <xsd:complexType name="typeHobbies">
         <xsd:sequence>
-            <xsd:element minOccurs="0" maxOccurs="unbounded" name="hob" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="hob" type="typeNonEmptyString"/>
         </xsd:sequence>
     </xsd:complexType>
 

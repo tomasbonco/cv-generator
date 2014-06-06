@@ -4,6 +4,9 @@ package cz.muni.fi.classes;
 import java.io.File;
 import java.io.IOException;
 import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -34,6 +37,36 @@ public class CVSchemaValidator {
         }catch(SAXException ex){
             System.err.println("Error at setting schema for validation: "+ex.getMessage());
         }
+    }
+    /**
+     * This method just extends method validate(Document doc), but as input
+     * paramater takes a xml file  from which creates xml document in memory (type Document)
+     * and that document pass in validate(Document doc).
+     * 
+     * @param xmlFile   input xml file which will be validated
+     * @return          true - xml file exists and is valid
+     *                  false - otherwise
+     */
+    public boolean validate(File xmlFile){
+        Document doc;
+        if (xmlFile.exists()) {
+            try {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                DocumentBuilder db = dbf.newDocumentBuilder();
+                doc = db.parse(xmlFile);
+            } catch (ParserConfigurationException ex) {
+                System.err.println(ex.getMessage());
+                return false;
+            } catch (SAXException ex) {
+                System.err.println(ex.getMessage());
+                return false;
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+                return false;
+            }
+            return (this.validate(doc));
+        }
+        return false;
     }
     
     /**

@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
-        <servlet-name>ServerCommunication</servlet-name>
-        <servlet-class>cz.muni.fi.server.ServerCommunication</servlet-class>
+        <servlet-name>NewCVCreation</servlet-name>
+        <servlet-class>cz.muni.fi.server.NewCVCreation</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ServerCommunication</servlet-name>
-        <url-pattern>/ServerCommunication</url-pattern>
+        <servlet-name>NewCVCreation</servlet-name>
+        <url-pattern>/NewCVCreation</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CVEditing</servlet-name>
+        <servlet-class>cz.muni.fi.server.CVEditing</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CVEditing</servlet-name>
+        <url-pattern>*.editing</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowInfo</servlet-name>
+        <jsp-file>/read.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowInfo</servlet-name>
+        <url-pattern>*.profile</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

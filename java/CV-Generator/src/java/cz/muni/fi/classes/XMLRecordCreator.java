@@ -49,12 +49,13 @@ public class XMLRecordCreator {
      * 
      * @param person    variable in which is kept all neccessary information about
      *                  person who wants to create a new cv
+     * @param contextPath
      * @return 
      */
-    public boolean generateXML(PersonalInfo person){
+    public boolean generateXML(PersonalInfo person, String contextPath){
         Document doc = this.docBuilder.newDocument();
-        CVSchemaValidator sv = new CVSchemaValidator("database.xsd");
-        File dir = new File("database");
+        CVSchemaValidator sv = new CVSchemaValidator(contextPath+"/database.xsd");
+        File dir = new File(contextPath,"database");
         int i = 0;
         
         //proceed creation of xml document, for this moment just in main memory
@@ -100,10 +101,11 @@ public class XMLRecordCreator {
             }
             return true;
         }else{
+            //xml file is created only because of further filling info to the form
+            //(new attempt after unsuccessful filling), will be removed            
+            save(doc,new File(contextPath,"invalid.xml"));
             return false;
         }
-        
-        
     }
     
     private void createSimpleTag(Document doc,Element rootElement,String content,String elemName){        

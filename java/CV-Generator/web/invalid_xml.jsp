@@ -1,7 +1,7 @@
 <%-- 
-    Document   : edit
-    Created on : 29.5.2014, 15:10:25
-    Author     : Jan Polišenský <polisensky88 at gmail.com>
+    Document   : notvalid
+    Created on : 4.6.2014, 18:36:57
+    Author     : Tomas Smid <smid.thomas at gmail.com>
 --%>
 
 <%@page import="java.nio.file.Paths"%>
@@ -16,7 +16,7 @@
 <% String cvKey = request.getParameter("cvKey"); %>
 <%-- load person from XML defined by cvKey --%>
 <%  Path contextPath = Paths.get(request.getServletContext().getRealPath(""));
-    File inXML = new File(contextPath.getParent().getParent().toString() + "/database.xml");
+    File inXML = new File(contextPath.getParent().getParent().toString() + "/invalid.xml");
 
     PersonalInfoBuilder pib = new PersonalInfoBuilder();
     PersonalInfo pi = pib.newPersonalInfo(inXML);%>
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300,600,900&amp;subset=latin,latin-ext" type="text/css">
   </head>
   <body id="page-create">
-    <form name="form" ng-controller="ctrl" action="create-new-cv" method="POST">
+    <form name="form" ng-controller="ctrl" action="" method="POST">
       <div class="container">
         <h1>Basic information</h1>
         <div class="row">

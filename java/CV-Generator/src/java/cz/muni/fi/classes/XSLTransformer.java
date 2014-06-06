@@ -27,18 +27,19 @@ public class XSLTransformer {
      * @param xslFile   XSLT according to is processed the transformation
      * @param xmlFile   xml document which will be transformed to tex file
      * @param destFile  tex file, result of transformation
+     * @param contextPath
      */
-    public void transformToTex(String xslFile, String xmlFile, String destFile){
+    public void transformToTex(String xslFile, String xmlFile, String destFile, String contextPath){
         
         TransformerFactory tf = TransformerFactory.newInstance();        
         Transformer xsltProc;
-        File dir = new File("pdf_database");
+        File dir = new File(contextPath,"pdf_database");
         if(!(dir.exists() && dir.isDirectory())){
             dir.mkdir();
         }
         try {        
-            xsltProc = tf.newTransformer(new StreamSource(new File(xslFile)));
-            xsltProc.transform(new StreamSource(new File("database",xmlFile)),
+            xsltProc = tf.newTransformer(new StreamSource(new File(contextPath,xslFile)));
+            xsltProc.transform(new StreamSource(new File(contextPath+"/database",xmlFile)),
                                new StreamResult(new File(dir,destFile)));
         } catch (TransformerConfigurationException ex) {
             System.err.println("Transformer initialization error: "+ex.getMessage());

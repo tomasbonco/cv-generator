@@ -367,7 +367,11 @@ public class PersonalInfo {
         this.hobbies = hobbies;
     }
 
-    public void setPasswordHash(String passwordHash) {
+    public void setPasswordHash1(String password) {
+        this.passwordHash = getDataHash(password);
+    }
+    
+    public void setPasswordHash2(String passwordHash){
         this.passwordHash = passwordHash;
     }
 

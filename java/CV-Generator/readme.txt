@@ -1,1 +1,0 @@
-There will be XML database. This file is temporary.

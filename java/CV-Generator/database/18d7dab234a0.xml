@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cv>
+<passwd>4b506c296818</passwd>
+<pretitle>Mgr.</pretitle>
+<firstname>Karel</firstname>
+<lastname>Cage</lastname>
+<posttitle>PhD.</posttitle>
+<address>
+<street>Ledunova 1558/32</street>
+<city>Brno</city>
+<postal>44771</postal>
+</address>
+<phones>
+<phone>+420 155 155 201</phone>
+<phone>+420 101 548 458</phone>
+<phone>+366 255 000 144</phone>
+</phones>
+<emails>
+<email>nicolas@flying.com</email>
+<email>frederyk1.johan@centrum.cz</email>
+<email>mkvoda@gmail.com</email>
+</emails>
+<employment>
+<emp from="2010-09" name="Samsung" position="Programmer" to="2011-10"/>
+<emp from="2003-06" name="ABB" position="konstrukter" to="2007-11"/>
+<emp from="2012-11" name="Nokia" position="Manager" to=""/>
+</employment>
+<education>
+<edu field-of-study="" from="1998-09" name="Gymnazium Unicov" to="2002-06"/>
+<edu field-of-study="PSZD" from="2010-09" name="MUNI" to="2013-12"/>
+</education>
+<languages>
+<lang level="intermediate" name="Czech"/>
+<lang level="advanced" name="Chinese"/>
+<lang level="native speaker" name="English"/>
+</languages>
+<certificates>
+<cer>Cisco</cer>
+<cer>Cisco CCNA</cer>
+<cer>SQL master</cer>
+</certificates>
+<skills>
+<sk level="intermediate" name="Microsoft Office"/>
+<sk level="advanced" name="Java"/>
+</skills>
+<hobbies>
+<hob>swimming</hob>
+<hob>programming</hob>
+<hob>fotbal</hob>
+</hobbies>
+</cv>

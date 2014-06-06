@@ -6,30 +6,28 @@
 
 package cz.muni.fi.server;
 
-
-import cz.muni.fi.classes.PDFfromLatexBuilder;
-import cz.muni.fi.classes.PersonalInfo;
-import cz.muni.fi.classes.XMLRecordCreator;
-import cz.muni.fi.classes.XSLTransformer;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This servlet is used for loading information about a person, who want to create
- * a new curriculum vitae and who fills needed information in a html form, and 
- * creating needed xml document which is important for further process.
+ * This servlet ensures the downloading of defined pdf file.
  * 
  * @author Tomas Smid <smid.thomas at gmail.com>
  */
-@WebServlet("/create-new-profile")
-public class ServerCommunication extends HttpServlet {
-    
-   /**
+public class DownloadPDF extends HttpServlet {
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -38,26 +36,33 @@ public class ServerCommunication extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @SuppressWarnings("empty-statement")
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
-        PersonalInfo person = new PersonalInfo(request.getParameterMap());        
-        XMLRecordCreator xmlrc = new XMLRecordCreator();
+        //get the servletPath (the end of url)
+        String servletPath = request.getServletPath();
+        //get the context path of servlet
+        Path contextPath = Paths.get(request.getServletContext().getRealPath(""));
         
-        if(xmlrc.generateXML(person) == true){
-            XSLTransformer xslt = new XSLTransformer();
-            xslt.transformToTex("xml_to_tex.xslt", person.getDateHash()+".xml", person.getDateHash()+".tex");
-            File texFile = new File("pdf_database",person.getDateHash());
-            PDFfromLatexBuilder pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
-            pflb.createPDF(texFile);
-        }else{
-            System.out.println("XML document its name is "+person.getDateHash()+".xml has not been created => it was not valid. ");
-        }        
-        
+        //if the servletPath is formed by correct pdf file (and end with it) then that pdf file will be downloaded
+        if(servletPath.endsWith(".pdf") && servletPath.length()== 17){
+            ServletOutputStream out = response.getOutputStream();
+            response.setContentType("application/pdf");
+            response.setHeader("Content-disposition", "attachment; filename=" + "Curriculum Vitae.pdf");
+            URL url = new URL("file:///"+contextPath.getParent().getParent().toString()+"/pdf_database"+servletPath);
+            BufferedInputStream bis = new BufferedInputStream(url.openStream());
+            BufferedOutputStream bos = new BufferedOutputStream(out);
+            byte[] buff = new byte[2048];
+            int bytesRead;
+            while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
+                bos.write(buff, 0, bytesRead);
+            }
+            bis.close();
+            bos.close();
+        }     
     }
-    
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -71,7 +76,7 @@ public class ServerCommunication extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -85,4 +90,15 @@ public class ServerCommunication extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }

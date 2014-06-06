@@ -18,7 +18,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * This servlet sends redirecting to required destination according to
+ * results of comparison of password hashes. If the comparison is true (the hashes
+ * are same) then user can edit his own CV information. Otherwise will be redirected
+ * to the page of his own information.
+ * 
  * @author Tomas Smid <smid.thomas at gmail.com>
  */
 public class CVEditing extends HttpServlet {

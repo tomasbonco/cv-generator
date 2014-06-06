@@ -3,7 +3,7 @@
     <servlet>
         <servlet-name>NewCVCreation</servlet-name>
         <servlet-class>cz.muni.fi.server.NewCVCreation</servlet-class>
-    </servlet>
+    </servlet>    
     <servlet-mapping>
         <servlet-name>NewCVCreation</servlet-name>
         <url-pattern>/NewCVCreation</url-pattern>
@@ -24,7 +24,16 @@
         <servlet-name>ShowInfo</servlet-name>
         <url-pattern>*.profile</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <servlet-name>DownloadPDF</servlet-name>
+        <servlet-class>cz.muni.fi.server.DownloadPDF</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadPDF</servlet-name>
+        <url-pattern>/database</url-pattern>
+        <url-pattern>/pdf_database</url-pattern>
+        <url-pattern>*.pdf</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

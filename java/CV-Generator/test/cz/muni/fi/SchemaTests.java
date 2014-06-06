@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
  * Class for testing whether xml schema is correctly designed or not and
  * whether xml document is correctly validated according to defined xml schema.
  * 
+ * @author Daniel Minarik <daniel.minarik at gmail.com>
  * @author Tomas Smid <smid.thomas at gmail.com>
  */
 public class SchemaTests {

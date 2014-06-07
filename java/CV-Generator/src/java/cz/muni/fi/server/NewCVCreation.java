@@ -30,7 +30,6 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * @author Tomas Smid <smid.thomas at gmail.com>
  */
-@WebServlet("/create-new-cv")
 public class NewCVCreation extends HttpServlet {
     
    /**
@@ -51,8 +50,19 @@ public class NewCVCreation extends HttpServlet {
         XMLRecordCreator xmlrc = new XMLRecordCreator();        
         Path cp = Paths.get(request.getServletContext().getRealPath(""));
         String contextPath = cp.getParent().getParent().toString();
+        String servletPath = request.getServletPath();        
         
         if(xmlrc.generateXML(person,contextPath) == true){
+            if(servletPath.endsWith(".modified") && servletPath.length() == 22){
+                File oldXmlFile = new File(contextPath+"/database"+servletPath.substring(0, 13)+".xml");
+                File oldPdfFile = new File(contextPath+"/pdf_database"+servletPath.substring(0, 13)+".pdf");
+                if(oldXmlFile.exists()){
+                    oldXmlFile.delete();
+                }
+                if(oldPdfFile.exists()){
+                    oldPdfFile.delete();
+                }
+            }
             XSLTransformer xslt = new XSLTransformer();
             xslt.transformToTex("xml_to_tex.xslt", person.getDateHash()+".xml", 
                                 person.getDateHash()+".tex",contextPath);
@@ -71,6 +81,7 @@ public class NewCVCreation extends HttpServlet {
         }else{            
             response.sendRedirect("invalid_xml.jsp");            
         }
+        
     }
     
     /**

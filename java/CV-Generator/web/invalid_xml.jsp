@@ -4,9 +4,7 @@
     Author     : Tomas Smid <smid.thomas at gmail.com>
 --%>
 
-<%@page import="java.io.PrintWriter"%>
 <%@page import="java.io.FileReader"%>
-<%@page import="java.io.BufferedReader"%>
 <%@page import="java.io.BufferedReader"%>
 <%@page import="java.nio.file.Paths"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +13,6 @@
 <%@page import="java.io.File"%>
 <%@page import="cz.muni.fi.classes.PersonalInfo" %>
 <%@page import="cz.muni.fi.classes.PersonalInfoBuilder" %>
-<%@page import="java.util.Map.Entry" %>
 
 <%  Path contextPath = Paths.get(request.getServletContext().getRealPath(""));
     File invalidXML = new File(contextPath.getParent().getParent().toString() + "/invalid.xml");
@@ -50,7 +47,6 @@
         </lu>
       </div>
       <% }
-         //pw.close();
          br.close();
          fin.delete();
       %>

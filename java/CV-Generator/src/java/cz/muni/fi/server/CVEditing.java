@@ -48,7 +48,7 @@ public class CVEditing extends HttpServlet {
         
         p.setPasswordHash1(request.getParameter("password"));
         if(p.getPasswordHash() != null && person.getPasswordHash().equals(p.getPasswordHash())){
-            response.sendRedirect("edit.jsp");
+            response.sendRedirect("/CV-Generator"+name+".editing");
         }else{
             response.sendRedirect("/CV-Generator"+name+".profile");
         }

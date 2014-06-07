@@ -6,7 +6,8 @@
     </servlet>    
     <servlet-mapping>
         <servlet-name>NewCVCreation</servlet-name>
-        <url-pattern>/NewCVCreation</url-pattern>
+        <url-pattern>/create-new-cv</url-pattern>
+        <url-pattern>*.modified</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CVEditing</servlet-name>
@@ -14,7 +15,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CVEditing</servlet-name>
-        <url-pattern>*.editing</url-pattern>
+        <url-pattern>*.red</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ShowInfo</servlet-name>
@@ -31,6 +32,14 @@
     <servlet-mapping>
         <servlet-name>DownloadPDF</servlet-name>
         <url-pattern>*.pdf</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditInfo</servlet-name>
+        <jsp-file>/edit.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditInfo</servlet-name>
+        <url-pattern>*.editing</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

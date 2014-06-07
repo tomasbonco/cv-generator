@@ -55,7 +55,7 @@
           <div class="next-page"><i class="icon-chevron-down"></i></div>
           <div class="edit-cv">
             <div class="button"><i class="icon-pencil"></i></div>
-            <form method="POST" action="<%out.print("/CV-Generator"+name+".editing");%>">
+            <form method="POST" action="<%out.print("/CV-Generator"+name+".red");%>">
               <input type="password" name="password" placeholder="Password">
             </form>
           </div>            

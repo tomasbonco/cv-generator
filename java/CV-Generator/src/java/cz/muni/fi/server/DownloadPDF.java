@@ -8,9 +8,7 @@ package cz.muni.fi.server;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -45,7 +43,7 @@ public class DownloadPDF extends HttpServlet {
         Path contextPath = Paths.get(request.getServletContext().getRealPath(""));
         
         //if the servletPath is formed by correct pdf file (and end with it) then that pdf file will be downloaded
-        if(servletPath.endsWith(".pdf") && servletPath.length()== 17){
+        if(servletPath.endsWith(".pdf") && servletPath.length() == 17){
             ServletOutputStream out = response.getOutputStream();
             response.setContentType("application/pdf");
             response.setHeader("Content-disposition", "attachment; filename=" + "Curriculum Vitae.pdf");

@@ -54,7 +54,7 @@ public class XMLRecordCreator {
      */
     public boolean generateXML(PersonalInfo person, String contextPath){
         Document doc = this.docBuilder.newDocument();
-        CVSchemaValidator sv = new CVSchemaValidator(contextPath+"/database.xsd");
+        CVSchemaValidator sv = new CVSchemaValidator(contextPath+"/database.xsd", contextPath);
         File dir = new File(contextPath,"database");
         int i = 0;
         

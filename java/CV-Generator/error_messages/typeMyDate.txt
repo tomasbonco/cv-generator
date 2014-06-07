@@ -1,0 +1,2 @@
+since - only digits (0-9) are allowed, the since pattern is yyyy-mm, e.g. 2014-01, can be empty
+to - only digits (0-9) are allowed, the to pattern is yyyy-mm, e.g. 2014-01, can be empty

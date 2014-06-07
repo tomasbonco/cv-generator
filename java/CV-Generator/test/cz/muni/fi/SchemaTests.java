@@ -39,7 +39,7 @@ public class SchemaTests {
     
     @Before
     public void setUp() {
-        this.validator = new CVSchemaValidator("database.xsd");
+        this.validator = new CVSchemaValidator("database.xsd", null);
     }
     
     @After

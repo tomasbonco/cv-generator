@@ -58,8 +58,7 @@
             <form method="POST" action="<%out.print("/CV-Generator"+name+".editing");%>">
               <input type="password" name="password" placeholder="Password">
             </form>
-          </div>
-            <%--String pathToPdf = contextPath.getParent().getParent().toString()+"/pdf_database"+name+".pdf";--%>
+          </div>            
             <%String pathToPdf = name.substring(1)+".pdf";%>
           <div class="download-pdf"><a href="<%out.print(pathToPdf);%>">
               <div class="button"><i class="icon-file-text"></i></div>

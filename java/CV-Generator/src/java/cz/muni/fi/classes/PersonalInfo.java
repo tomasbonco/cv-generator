@@ -58,7 +58,10 @@ public class PersonalInfo {
             this.education = setEmplEduValues(htmlScheduleData, "e_");
             this.languages = setLangOrSkillValue(htmlScheduleData, "l_language", "l_level");
             this.skills = setLangOrSkillValue(htmlScheduleData, "s_skill", "s_level");
-            this.passwordHash = getDataHash(setStringValue(htmlScheduleData,"password"));
+            if(!setStringValue(htmlScheduleData,"password").trim().equals("") 
+                        && setStringValue(htmlScheduleData,"password") != null){
+                this.passwordHash = getDataHash(setStringValue(htmlScheduleData,"password"));
+            }
         }
         this.dateHash = getDataHash(new Date().toString());
     }

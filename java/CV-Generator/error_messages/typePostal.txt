@@ -1,0 +1,1 @@
+postal code - only digits (0-9) are allowed, must be filled 5 digits, after third digit can appear one space

@@ -11,7 +11,9 @@ import cz.muni.fi.classes.PDFfromLatexBuilder;
 import cz.muni.fi.classes.PersonalInfo;
 import cz.muni.fi.classes.XMLRecordCreator;
 import cz.muni.fi.classes.XSLTransformer;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -61,12 +63,13 @@ public class NewCVCreation extends HttpServlet {
             File fTexToDelete = new File(texFile+".tex");
             fOutToDelete.delete();
             fTexToDelete.delete();
+            File invalidFile = new File(contextPath,"invalid.xml");
+            if(invalidFile.exists()){
+                invalidFile.delete();
+            }
             response.sendRedirect(person.getDateHash()+".profile");
-        }else{
-            //System.out.println("XML document its name is "+person.getDateHash()+".xml has not been created => it was not valid. ");
-            //File invalidXML = new File("invalid.xml");
-            response.sendRedirect("invalid_xml.jsp");
-            //invalidXML.delete();
+        }else{            
+            response.sendRedirect("invalid_xml.jsp");            
         }
     }
     

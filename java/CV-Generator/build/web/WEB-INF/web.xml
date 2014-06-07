@@ -30,8 +30,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>DownloadPDF</servlet-name>
-        <url-pattern>/database</url-pattern>
-        <url-pattern>/pdf_database</url-pattern>
         <url-pattern>*.pdf</url-pattern>
     </servlet-mapping>
     <session-config>

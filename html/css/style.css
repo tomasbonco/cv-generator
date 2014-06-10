@@ -258,6 +258,10 @@ section.text-content .wrapper-rs {
   background-image: url(../img/tomas.png);
   background-position: left center;
 }
+#page-index #team .img.jp {
+  background-image: url(../img/honza.png);
+  background-position: center center;
+}
 #page-index #team .img.dm {
   background-image: url(../img/dano.png);
   background-position: center center;

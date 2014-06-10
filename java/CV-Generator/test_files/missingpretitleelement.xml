@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ *  database.xml - Database for CV generator
+ *  Contains data of one user, file name will be generated as hash
+ *
+ *  This file is a part of the CV generator - School project
+ *  for PB138 (Masaryk University, Brno, Czech republic)
+ *
+ *  Copyright (C) 2014  Daniel Minarik <daniel.minarik@gmail.com>
+-->
+
+<cv>
+    <!--mandatory element, password-->
+    <passwd>1111</passwd>
+    <!--mandatory element, string containing only a-zA-Z, dot, space, can be empty-->
+    <!--mandatory element, non-empty string-->
+    <firstname>Arnold</firstname>
+    <!--mandatory element, non-empty string-->
+    <lastname>Novak</lastname>
+    <!--mandatory element, string containing only a-zA-Z, dot, space, can be empty-->
+    <posttitle>cSc.</posttitle>
+    <!--
+    <address> is mandatory element
+    the <street>, <city>, <postal> can be ordered in any order
+    -->
+    <address>
+        <!--mandatory element, non-empty string-->
+        <street>Hrncirska 123/4</street>
+        <!--mandatory element, non-empty string-->
+        <city>Brno</city>
+        <!--mandatory element, non-empty numbers (optional space allowed on fourth position)-->
+        <postal>001 01</postal>
+    </address>
+    <!--
+    <phones> is mandatory element
+    must contain at least one <phone> element
+    -->
+    <phones>
+        <!--non-empty numbers, white spaces and "+" symbol are allowed-->
+        <phone>+420 123 456 789</phone>            
+        <phone>+420 123 456 789</phone>            
+    </phones>
+    <!--
+    <emails> is mandatory element
+    must contain at least one <email> element
+    -->
+    <emails>
+        <!--email pattern: [non-empty string]@[non-empty string].[non-empty string]-->
+        <email>arnoldnovak@gmail.com</email>
+        <email>arnoldnovak@fi.muni.cz</email>
+    </emails>
+    <!--
+    <employment> is mandatory element
+    does not have to contain <emp> element
+    -->
+    <employment>
+        <!--
+        @name is required - non-empty string
+        @position is required - non-empty string
+        @from is required - year-month (XXXX-XX) or empty
+        @to is required - year-month (XXXX-XX) or empty
+        -->
+        <emp name="Google" position="Developer" from="2013-01" to="2014-03"/>
+        <emp name="Apple" position="Manager" from="2014-04" to=""/>
+    </employment>
+    <!--
+    <education> is mandatory element
+    does not have to contain <edu> element
+    -->
+    <education>
+        <!--
+        @name is required - non-empty string
+        @field-of-study is required - string, can be empty
+        @from is required - year-month (XXXX-XX) or empty
+        @to is required - year-month (XXXX-XX) or empty
+        -->
+        <edu name="MUNI" field-of-study="Graphics" from="2000-09" to="2011-06"/>
+        <edu name="Gymnasium X" field-of-study="" from="2004-09" to="2007-06"/>
+    </education>
+    <!--
+    <languages> is mandatory element
+    does not have to contain <lang> element
+    -->
+    <languages>
+        <!--
+        @name is required - non-empty string
+        @level is required - only words {Native speaker|Basic|Intermediate|Advanced}
+        -->
+        <lang name="Czech" level="native speaker"/>
+        <lang name="Sanish" level="basic"/>
+        <lang name="German" level="intermediate"/>
+        <lang name="English" level="advanced"/>
+    </languages>
+    <!--
+    <certificates> is mandatory element
+    does not have to contain <cer> element
+    -->
+    <certificates>
+        <!--some description text - non-empty string-->
+        <cer>CISCO networks</cer>
+        <cer>Klingongstina pre zaciatocnikov</cer>
+    </certificates>
+    <!--
+    <skills> is mandatory element
+    does not have to contain <sk> element
+    -->
+    <skills>
+        <!--
+        @name is required - non-empty string
+        @level is required - only words {Basic|Intermediate|Advanced}, first letter is case insensitive
+        -->
+        <sk name="Leadership skills" level="basic"/>
+        <sk name="Internet Explorer" level="intermediate"/>
+        <sk name="MS Office" level="advanced"/>
+    </skills>
+    <!--
+    <hobbies> is mandatory element
+    does not have to contain <hob> element
+    -->
+    <hobbies>
+        <!--some description text (no restrictions)-->
+        <hob>Eating</hob>
+        <hob>Sleeping</hob>
+        <hob>Waiting</hob>
+    </hobbies>
+</cv>

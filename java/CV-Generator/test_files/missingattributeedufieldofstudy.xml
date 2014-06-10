@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  *  database.xml - Database for CV generator
- *  Contains data of one user
+ *  Contains data of one user, file name will be generated as hash
  *
  *  This file is a part of the CV generator - School project
  *  for PB138 (Masaryk University, Brno, Czech republic)
@@ -75,7 +75,7 @@
         @from is required - year-month (XXXX-XX) or empty
         @to is required - year-month (XXXX-XX) or empty
         -->
-        <edu name="MUNI" field-of-study="Graphics" from="2000-09" to="2011-06"/>
+        <edu name="MUNI" from="2000-09" to="2011-06"/>
         <edu name="Gymnasium X" field-of-study="" from="2004-09" to="2007-06"/>
     </education>
     <!--

@@ -113,7 +113,7 @@
     <!--HOBBIES element type-->
     <xsd:complexType name="typeHobbies">
         <xsd:sequence>
-            <xsd:element minOccurs="0" maxOccurs="unbounded" name="hob" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="hob" type="typeNonEmptyString"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -145,7 +145,7 @@
     <!--PHONE type-->
     <xsd:simpleType name="typePhone">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="[\d +-/\\\(\)]+"/>
+            <xsd:pattern value="\+?(\(?[0-9]+)([\(\) 0-9]*)"/>
         </xsd:restriction>
     </xsd:simpleType>
     <!--EMAIL type-->

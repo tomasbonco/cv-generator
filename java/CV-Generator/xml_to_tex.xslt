@@ -20,13 +20,6 @@
     <xsl:template match="cv">
         <!--Document beginning-->
         <xsl:text>\documentclass[english]{ecv}
-\usepackage{selinput}
-\SelectInputMappings{
-adieresis={ä},
-germandbls={ß},
-Euro={€},
-}
-\usepackage[T1]{fontenc}
 \ecvName{</xsl:text>
         <!--Document name-->
         <xsl:value-of select="lastname"/>
@@ -247,8 +240,8 @@ Euro={€},
         <xsl:value-of select="lastname"/>
         <xsl:text>}{Brno}
 \end{document}
+\end
     </xsl:text>
 
     </xsl:template>
-
 </xsl:stylesheet>

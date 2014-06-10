@@ -1,0 +1,8 @@
+street - must not be empty (it is required), formed only with whitespaces = empty
+city - must not be empty (it is required), formed only with whitespaces = empty
+password - must not be empty (it is required), formed only with whitespaces = empty
+firstname - must not be empty (it is required), formed only with whitespaces = empty
+lastname - must not be empty (it is required), formed only with whitespaces = empty
+company - must not be empty if position is filled, formed only with whitespaces = empty
+position - must not be empty if company is filled, formed only with whitespaces = empty
+name (at education) - must not be empty if field of study is filled, formed only with whitespaces = empty

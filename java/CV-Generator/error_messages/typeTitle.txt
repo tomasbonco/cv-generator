@@ -1,0 +1,2 @@
+pretitle - only lower case, upper case, dots and spaces are allowed, can be empty
+posttile - only lower case, upper case, dots and spaces are allowed, can be empty

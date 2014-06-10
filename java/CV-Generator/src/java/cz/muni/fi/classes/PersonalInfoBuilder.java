@@ -57,6 +57,7 @@ public class PersonalInfoBuilder {
         result.setFirstname(getUniqueElementText(rootElem, "firstname"));
         result.setLastname(getUniqueElementText(rootElem, "lastname"));
         result.setPosttitle(getUniqueElementText(rootElem, "posttitle"));
+        result.setPasswordHash2(getUniqueElementText(rootElem, "passwd"));
         
         NodeList phones = rootElem.getElementsByTagName("phone");
         List<String> resultPhones = new ArrayList<String>();
@@ -68,7 +69,7 @@ public class PersonalInfoBuilder {
         NodeList emails = rootElem.getElementsByTagName("email");
         List<String> resultEmails = new ArrayList<String>();
         for (int i=0; i<emails.getLength(); i++) {
-            resultEmails.add(phones.item(i).getTextContent());
+            resultEmails.add(emails.item(i).getTextContent());
         }
         result.setEmails(resultEmails);
         

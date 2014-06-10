@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mocha.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300,600,900&amp;subset=latin,latin-ext" type="text/css">
   </head>
   <body id="page-create">
@@ -42,11 +43,11 @@
           <div ng-init="phones = []; _phone = []" class="col-xs-6">
             <div>
               <label class="block">Phone number*</label>
-              <input type="text" name="phone[0]" ng-model="_phone[0]" ng-pattern="/^[\+]{0,1}[0-9\(\) ]+$/" ng-required="true" placeholder="e.g. +420 123 456 789">
+              <input type="text" name="phone[0]" ng-model="_phone[0]" ng-pattern="/^\+?(\(?[0-9]+)([\(\) 0-9]*)$/" ng-required="true" placeholder="e.g. +420 123 456 789">
               <div ng-show="valid('phone[0]').invalid.required" class="error">This is required!</div>
-              <div ng-show="valid('phone[0]').invalid.pattern" class="error">Only numbers, spaces, brackets and sign plus are allowed!</div>
+              <div ng-show="! valid('phone[0]').invalid.required &amp;&amp; valid('phone[0]').invalid.pattern" class="error">Only numbers, spaces, brackets and sign plus are allowed!</div>
               <div ng-repeat="phone in phones">
-                <input type="text" name="phone[{{$index + 1}}]" ng-model="_phone[ $index + 1 ]" ng-pattern="/^[\+]{0,1}[0-9\(\) ]+$/" placeholder="e.g. +420 123 456 789">
+                <input type="text" name="phone[{{$index + 1}}]" ng-model="_phone[ $index + 1 ]" ng-pattern="/^\+?(\(?[0-9]+)([\(\) 0-9]*)$/" placeholder="e.g. +420 123 456 789">
                 <div ng-hide="valid('phone[{{$index + 1}}]').valid" class="error">Only numbers, spaces, brackets and sign plus are allowed!</div>
               </div><a ng-click="phones.push([])" class="btn pull-right">Add phone number</a>
             </div>
@@ -63,8 +64,9 @@
             </div>
             <div>
               <label class="block">Postal Code*</label>
-              <input type="text" name="postal" ng-model="postal" ng-required="true" placeholder="e.g. 405 32" ng-init="postal = ''">
+              <input type="text" name="postal" ng-model="postal" ng-required="true" ng-pattern="/^[0-9]{3}[ ]?[0-9]{2}$/" placeholder="e.g. 405 32" ng-init="postal = ''">
               <div ng-hide="form.postal.$valid" class="error">This is required!</div>
+              <div ng-show="! valid('phone[0]').invalid.required &amp;&amp; valid('phone[0]').invalid.pattern" class="error">In format NNN NN!</div>
             </div>
           </div>
           <div ng-init="emails = []; _email = []" class="col-xs-6">
@@ -101,11 +103,11 @@
             <input type="text" name="c_position[]" ng-model="_c_position[ $index ]" placeholder="e.g. CEO">
           </div>
           <div class="col-xs-2">
-            <input type="text" name="c_since[{{$index}}]" ng-model="_c_since[ $index ]" ng-pattern="/^[0-9]{4}\-[0-9]{2}$/" placeholder="e.g. 2010-10">
+            <input type="text" name="c_since[{{$index}}]" ng-model="_c_since[ $index ]" ng-pattern="/^((19|20)[0-9]{2})\-(01|02|03|04|05|06|07|08|09|10|11|12)$/" placeholder="e.g. 2010-10">
             <div ng-hide="valid('c_since[{{$index}}]').valid" class="error">In format YYYY-MM!</div>
           </div>
           <div class="col-xs-2">
-            <input type="text" name="c_to[{{$index}}]" ng-model="_c_to[ $index ]" ng-pattern="/^[0-9]{4}\-[0-9]{2}$/" placeholder="e.g. 2012-07">
+            <input type="text" name="c_to[{{$index}}]" ng-model="_c_to[ $index ]" ng-pattern="/^((19|20)[0-9]{2})\-(01|02|03|04|05|06|07|08|09|10|11|12)$/" placeholder="e.g. 2012-07">
             <div ng-hide="valid('c_to[{{$index}}]').valid" class="error">In format YYYY-MM!</div>
           </div>
         </div><a ng-click="companies.push([])" class="btn pull-right">Add employment</a>
@@ -134,11 +136,11 @@
             <input type="text" name="e_position[]" ng-model="_e_position[ $index ]" placeholder="e.g. Informatics">
           </div>
           <div class="col-xs-2">
-            <input type="text" name="e_since[{{$index}}]" ng-model="_e_since[ $index ]" ng-pattern="/^[0-9]{4}\-[0-9]{2}$/" placeholder="e.g. 2013-09">
+            <input type="text" name="e_since[{{$index}}]" ng-model="_e_since[ $index ]" ng-pattern="/^((19|20)[0-9]{2})\-(01|02|03|04|05|06|07|08|09|10|11|12)$/" placeholder="e.g. 2013-09">
             <div ng-hide="valid('e_since[{{$index}}]').valid" class="error">In format YYYY-MM!</div>
           </div>
           <div class="col-xs-2">
-            <input type="text" name="e_to[{{$index}}]" ng-model="_e_to[ $index ]" ng-pattern="/^[0-9]{4}\-[0-9]{2}$/" placeholder="e.g. 2015-05">
+            <input type="text" name="e_to[{{$index}}]" ng-model="_e_to[ $index ]" ng-pattern="/^((19|20)[0-9]{2})\-(01|02|03|04|05|06|07|08|09|10|11|12)$/" placeholder="e.g. 2015-05">
             <div ng-hide="valid('e_to[{{$index}}]').valid" class="error">In format YYYY-MM!</div>
           </div>
         </div><a ng-click="studies.push([])" class="btn pull-right">Add education</a>
@@ -229,9 +231,15 @@
         <div ng-show=" ! form.$valid" class="btn disabled block text-center">Formular is not valid. Please fill it correctly.</div>
         <input type="submit" ng-show="form.$valid" class="btn">
       </div>
+      <div id="mocha"></div>
     </form>
     <script src="js/angular.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/mocha.js"></script>
+    <script src="js/chai.js"></script>
+    <script>mocha.setup('bdd'); should = chai.should();</script>
+    <script src="js/tests.js"></script>
+    <script>mocha.run()</script>
   </body>
 </html>

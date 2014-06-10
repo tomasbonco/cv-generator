@@ -164,6 +164,11 @@ section.full {
 section.text-content .wrapper-rs {
   padding: 100px 0;
 }
+@media (max-width: 767px) {
+  section.full {
+    padding: 0 20px;
+  }
+}
 #page-index h1 {
   font-size: 42px;
 }
@@ -392,6 +397,12 @@ section.text-content .wrapper-rs {
 #page-read h2 {
   font-size: 42px;
 }
+#page-read .margin-top {
+  margin-top: 40px;
+}
+#page-read .margin-top-heavy {
+  margin-top: 200px;
+}
 #page-read #welcome {
   background: rgba(50, 54, 58, 0.9);
   color: #fff;
@@ -444,7 +455,7 @@ section.text-content .wrapper-rs {
   }
 }
 #page-read #welcome .background {
-  background-image: url(https://farm9.staticflickr.com/8152/7435718416_ba1f1d299f_k.jpg);
+  background-image: url(../img/city.png);
 }
 #page-read #welcome .row {
   margin-bottom: 40px;
@@ -488,6 +499,12 @@ section.text-content .wrapper-rs {
 #page-read #welcome .edit-cv:hover form input {
   width: 297px;
 }
+#page-read #welcome .edit-cv.open form input {
+  width: 250px;
+}
+#page-read #welcome .edit-cv.open:hover form input {
+  width: 250px;
+}
 #page-read #welcome .download-pdf {
   position: absolute;
   top: 120px;
@@ -527,6 +544,18 @@ section.text-content .wrapper-rs {
   width: 297px;
 }
 #page-read #welcome .download-pdf:hover .text-overflow .text {
+  opacity: 1;
+}
+#page-read #welcome .download-pdf.open .text-overflow {
+  width: 250px;
+}
+#page-read #welcome .download-pdf.open .text-overflow .text {
+  opacity: 1;
+}
+#page-read #welcome .download-pdf.open:hover .text-overflow {
+  width: 250px;
+}
+#page-read #welcome .download-pdf.open:hover .text-overflow .text {
   opacity: 1;
 }
 #page-read #employment {
@@ -644,6 +673,26 @@ section.text-content .wrapper-rs {
 }
 #page-read footer a {
   color: #5797c7;
+}
+@media (max-width: 767px) {
+  #page-read #welcome .edit-cv form input {
+    width: 250px;
+  }
+  #page-read #welcome .edit-cv:hover form input {
+    width: 250px;
+  }
+  #page-read #welcome .download-pdf .text-overflow {
+    width: 250px;
+  }
+  #page-read #welcome .download-pdf .text-overflow .text {
+    opacity: 1;
+  }
+  #page-read #welcome .download-pdf:hover .text-overflow {
+    width: 250px;
+  }
+  #page-read #welcome .download-pdf:hover .text-overflow .text {
+    opacity: 1;
+  }
 }
 body {
   margin: 0;

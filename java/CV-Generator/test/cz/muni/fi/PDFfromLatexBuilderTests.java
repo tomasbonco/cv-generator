@@ -38,7 +38,8 @@ public class PDFfromLatexBuilderTests {
     
     @Before
     public void setUp() {
-        pflb = new PDFfromLatexBuilder("C:\\Users\\Honza\\Disk Google\\Tex\\test");
+        //path to latex must be set
+        pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
         latexFile = new File("test_files","simple_latex_cv");
         pdfFile = new File(pflb.createPDF(latexFile));
     }

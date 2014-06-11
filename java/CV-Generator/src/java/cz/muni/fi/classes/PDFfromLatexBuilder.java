@@ -99,6 +99,10 @@ public class PDFfromLatexBuilder {
             //delete intermediate .log file
             File log = new File(latexFile.getAbsolutePath()+".log");
             log.delete();
+            
+            //delete intermediate .out file
+            File out = new File(latexFile.getAbsolutePath()+".out");
+            out.delete();
         
         return result;
     };

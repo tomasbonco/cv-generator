@@ -60,10 +60,10 @@ public class PersonalInfo {
             this.skills = setLangOrSkillValue(htmlScheduleData, "s_skill", "s_level");
             if(!setStringValue(htmlScheduleData,"password").trim().equals("") 
                         && setStringValue(htmlScheduleData,"password") != null){
-                this.passwordHash = getDataHash(setStringValue(htmlScheduleData,"password"));
+                this.passwordHash = getDataHash(setStringValue(htmlScheduleData,"password"),'p');                
             }
         }
-        this.dateHash = getDataHash(new Date().toString());
+        this.dateHash = getDataHash(new Date().toString(),'d');
     }
     
     /**
@@ -220,26 +220,32 @@ public class PersonalInfo {
         return retVal;
     }
     
-    private String getDataHash(String data){
+    private String getDataHash(String data, char val){
         MessageDigest md;
-        String dataHash = null;
+        String salts = "12,12,12";
+        String dataHash = "";
+        
+        String salttmp[] = salts.split(",");
+        byte salt[] = new byte[salttmp.length];
+
+        for (int i = 0; i < salt.length; i++) {
+            salt[i] = Byte.parseByte(salttmp[i]);
+        }
         try {
             md = MessageDigest.getInstance("MD5");
+            md.update(salt);
             md.update(data.getBytes());
             byte byteData[] = md.digest();
-            StringBuilder hexString = new StringBuilder();
             for (int i = 0; i < byteData.length; i++) {
-                String hex = Integer.toHexString(0xff & byteData[i]);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-                dataHash = hexString.toString();
+                dataHash += Integer.toHexString((0x000000ff & byteData[i]) | 0xffffff00).substring(6);
             }
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("Time hash (no such algorithm) error: "+ex.getMessage());
         }
-        return dataHash.substring(0, 12);
+        switch(val){
+            case 'p': return dataHash;
+            default: return dataHash.substring(0, 12);
+        }
     }
     
     public String getPretitle(){
@@ -371,7 +377,11 @@ public class PersonalInfo {
     }
 
     public void setPasswordHash1(String password) {
-        this.passwordHash = getDataHash(password);
+        if(password != null && !password.trim().equals("")){
+            this.passwordHash = getDataHash(password,'p');
+        }else{
+            this.passwordHash = null;
+        }
     }
     
     public void setPasswordHash2(String passwordHash){
@@ -379,7 +389,7 @@ public class PersonalInfo {
     }
 
     public void setDateHash(String date) {
-        this.dateHash = getDataHash(date);
+        this.dateHash = getDataHash(date,'d');
     }
 }
     

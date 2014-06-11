@@ -6,6 +6,7 @@
 
 package cz.muni.fi.classes;
 
+
 import java.io.File;
 import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
@@ -196,6 +197,7 @@ public class XMLRecordCreator {
     
     private void createEmploymentTag(Document doc,Element rootElement,PersonalInfo person){
         int k;
+        int error = 0;
         
         Element emplElement = doc.createElement("employment");
         rootElement.appendChild(emplElement);        
@@ -214,12 +216,30 @@ public class XMLRecordCreator {
                 elem.setAttribute("position", person.getEmployments().get(i).get(1));
                 elem.setAttribute("from", person.getEmployments().get(i).get(2));
                 elem.setAttribute("to", person.getEmployments().get(i).get(3));
+                if(isDateCorrect(person.getEmployments().get(i).get(2),person.getEmployments().get(i).get(3)) == false && error != 1){
+                    elem.setAttribute("error", "1");
+                }
             }
         }        
     }
     
+    private boolean isDateCorrect(String since, String to){
+        String modSince;
+        String modTo;
+        
+        if(since != null && !since.trim().equals("") && to != null && !to.trim().equals("")){            
+            modSince = since.replace("-", "");
+            modTo = to.replace("-", "");
+            int sDate = Integer.parseInt(modSince);
+            int tDate = Integer.parseInt(modTo);
+            return (sDate <= tDate);
+        }
+        return true;
+    }
+    
     private void createEducationTag(Document doc,Element rootElement,PersonalInfo person){        
         int k;
+        int error = 0;
         
         Element eduElement = doc.createElement("education");
         rootElement.appendChild(eduElement);
@@ -239,6 +259,9 @@ public class XMLRecordCreator {
                     elem.setAttribute("field-of-study", person.getEducation().get(i).get(1));
                     elem.setAttribute("from", person.getEducation().get(i).get(2));
                     elem.setAttribute("to", person.getEducation().get(i).get(3));
+                    if(isDateCorrect(person.getEducation().get(i).get(2),person.getEducation().get(i).get(3)) == false && error != 1){
+                        elem.setAttribute("error", "1");
+                    }
                 }
             }
         }

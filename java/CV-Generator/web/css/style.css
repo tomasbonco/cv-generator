@@ -164,6 +164,11 @@ section.full {
 section.text-content .wrapper-rs {
   padding: 100px 0;
 }
+@media (max-width: 767px) {
+  section.full {
+    padding: 0 20px;
+  }
+}
 #page-index h1 {
   font-size: 42px;
 }
@@ -258,6 +263,10 @@ section.text-content .wrapper-rs {
   background-image: url(../img/tomas.png);
   background-position: left center;
 }
+#page-index #team .img.jp {
+  background-image: url(../img/honza.png);
+  background-position: center center;
+}
 #page-index #team .img.dm {
   background-image: url(../img/dano.png);
   background-position: center center;
@@ -307,6 +316,52 @@ section.text-content .wrapper-rs {
 #page-create input:focus {
   border-color: #3498db;
 }
+#page-create input[type="submit"] {
+  display: inline-block;
+  padding: 12px 28px 12px;
+  margin-top: 12px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: none;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 22px;
+  cursor: pointer;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+#page-create input[type="submit"]:hover,
+#page-create input[type="submit"]:focus {
+  text-decoration: none;
+  background: #e74c3c;
+  color: #fff;
+}
+#page-create input[type="submit"]:active,
+#page-create input[type="submit"].active {
+  border-color: #e74c3c;
+  background: #e74c3c;
+  color: rgba(255, 255, 255, 0.75);
+}
+#page-create input[type="submit"].disabled {
+  color: #fff;
+  border: 2px solid #95a5a6;
+  background: #95a5a6;
+}
+#page-create input[type="submit"].disabled:hover,
+#page-create input[type="submit"].disabled:focus {
+  text-decoration: none;
+  background: #95a5a6;
+  border: 2px solid #7f8c8d;
+  color: #fff;
+}
 #page-create select {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -341,6 +396,12 @@ section.text-content .wrapper-rs {
 #page-read h1,
 #page-read h2 {
   font-size: 42px;
+}
+#page-read .margin-top {
+  margin-top: 40px;
+}
+#page-read .margin-top-heavy {
+  margin-top: 200px;
 }
 #page-read #welcome {
   background: rgba(50, 54, 58, 0.9);
@@ -394,7 +455,7 @@ section.text-content .wrapper-rs {
   }
 }
 #page-read #welcome .background {
-  background-image: url(https://farm9.staticflickr.com/8152/7435718416_ba1f1d299f_k.jpg);
+  background-image: url(../img/city.png);
 }
 #page-read #welcome .row {
   margin-bottom: 40px;
@@ -438,6 +499,12 @@ section.text-content .wrapper-rs {
 #page-read #welcome .edit-cv:hover form input {
   width: 297px;
 }
+#page-read #welcome .edit-cv.open form input {
+  width: 250px;
+}
+#page-read #welcome .edit-cv.open:hover form input {
+  width: 250px;
+}
 #page-read #welcome .download-pdf {
   position: absolute;
   top: 120px;
@@ -477,6 +544,18 @@ section.text-content .wrapper-rs {
   width: 297px;
 }
 #page-read #welcome .download-pdf:hover .text-overflow .text {
+  opacity: 1;
+}
+#page-read #welcome .download-pdf.open .text-overflow {
+  width: 250px;
+}
+#page-read #welcome .download-pdf.open .text-overflow .text {
+  opacity: 1;
+}
+#page-read #welcome .download-pdf.open:hover .text-overflow {
+  width: 250px;
+}
+#page-read #welcome .download-pdf.open:hover .text-overflow .text {
   opacity: 1;
 }
 #page-read #employment {
@@ -594,6 +673,26 @@ section.text-content .wrapper-rs {
 }
 #page-read footer a {
   color: #5797c7;
+}
+@media (max-width: 767px) {
+  #page-read #welcome .edit-cv form input {
+    width: 250px;
+  }
+  #page-read #welcome .edit-cv:hover form input {
+    width: 250px;
+  }
+  #page-read #welcome .download-pdf .text-overflow {
+    width: 250px;
+  }
+  #page-read #welcome .download-pdf .text-overflow .text {
+    opacity: 1;
+  }
+  #page-read #welcome .download-pdf:hover .text-overflow {
+    width: 250px;
+  }
+  #page-read #welcome .download-pdf:hover .text-overflow .text {
+    opacity: 1;
+  }
 }
 body {
   margin: 0;

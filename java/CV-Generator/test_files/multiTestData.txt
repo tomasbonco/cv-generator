@@ -1,0 +1,41 @@
+pretitle;Ing. Mgr.
+name;Josef
+surname;Masopust
+posttitle;PhD.
+street;Erbenova 366/05
+city;Liberec
+postal;655 84
+phone[0];+420 731 589 487
+phone[1];+421122544879
+phone[2];654874124
+phone[3];+420879111000
+email[0];karate@kid.com
+email[1];pfot@gmail.com
+email[2];josmas@masopust.cz
+c_name[];Nokia;Samsung;ABB;AT&T;Google
+c_position[];Manager;Manager;Programmer;Programmer;Developer
+c_since[0];2010-01
+c_since[1];2011-02
+c_since[2];2012-05
+c_since[3];2012-08
+c_since[4];2014-03
+c_to[0];2011-02
+c_to[1];2012-04
+c_to[2];2013-06
+c_to[3];
+c_to[4];
+e_name[];Komenskeho gymnazium, Pribram;Masarykova Univerzita, Brno;Masarykova Univerzita, Brno
+e_position[];;informatics;mathematics
+e_since[0];1996-09
+e_since[1];2000-09
+e_since[2];2001-09
+e_to[0];2000-06
+e_to[1];2010-06
+e_to[2];2006-06
+l_language[];Czech;English;Spanish;Russian
+l_level[];native speaker;advanced;basic;intermediate
+certificate[];ISTQB;Cisco CNNA
+s_skill[];MS Office;Java;Perl;PHP
+s_level[];basic;advanced;intermediate;advanced
+hobby[];golf;football;tennis
+password;jej457da

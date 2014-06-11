@@ -87,7 +87,6 @@ public class PersonalInfoBuilder {
            employment.add( emp.getAttribute("position"));
            employment.add( emp.getAttribute("from"));
            employment.add( emp.getAttribute("to"));
-           employment.add( emp.getAttribute("current"));
             
             resultEmployments.put(i, employment);
         }
@@ -102,7 +101,6 @@ public class PersonalInfoBuilder {
            education.add( edu.getAttribute("field-of-study"));
            education.add( edu.getAttribute("from"));
            education.add( edu.getAttribute("to"));
-           education.add( edu.getAttribute("current"));
             
            resultEducations.put(i, education);
         }

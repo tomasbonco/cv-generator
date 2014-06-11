@@ -59,8 +59,7 @@ public class PDFfromLatexBuilder {
             //start latex to generate .dvi file
             pb.command(dviParams);
             System.out.println("Starting:" + pb.command());
-            Process dviProcess = pb.start();
-            //dviProcess.waitFor(500, TimeUnit.MILLISECONDS);            
+            Process dviProcess = pb.start();  
             BufferedReader reader = new BufferedReader (new InputStreamReader(dviProcess.getInputStream()));
             String line;
             while ((line = reader.readLine ()) != null) {
@@ -72,7 +71,6 @@ public class PDFfromLatexBuilder {
             pb.command(pdfParams);
             System.out.println("Starting:" + pb.command());
             Process pdfProcess = pb.start();
-            //pdfProcess.waitFor(500, TimeUnit.MILLISECONDS);            
             reader = new BufferedReader (new InputStreamReader(pdfProcess.getInputStream()));
             while ((line = reader.readLine ()) != null) {
                 System.out.println ("Stdout: " + line);
@@ -84,9 +82,8 @@ public class PDFfromLatexBuilder {
         } catch (IOException ex) {
             Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Can not create PDF file from " + latexFile.getName() + ".tex due to error: " + ex.getMessage());
-        }/* catch (InterruptedException ex) {
-            Logger.getLogger(PDFfromLatexBuilder.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        
+        }
         
             //cleanup
             //--------------------------------------

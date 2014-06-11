@@ -5,6 +5,16 @@
 		font-size: 42px;
 	}
 
+	.margin-top
+	{
+		margin-top: 40px;
+	}
+
+	.margin-top-heavy
+	{
+		margin-top: 200px;
+	}
+
 	#welcome
 	{
 		.v-center;
@@ -14,7 +24,13 @@
 
 		.background
 		{
-			background-image: url(https://farm9.staticflickr.com/8152/7435718416_ba1f1d299f_k.jpg);
+			// Photo By Instant Vantage:
+			// http://www.flickr.com/photos/instantvantage/7435718416/
+
+			// Licence CC BY-SA(Attribution-ShareAlike):
+			// https://creativecommons.org/licenses/by-sa/2.0/
+
+			background-image: url(../img/city.png);
 		}
 
 		.row
@@ -83,6 +99,28 @@
 					}
 				}
 			}
+
+			&.open
+			{
+				form
+				{
+					input
+					{
+						width: 250px;
+					}
+				}
+
+				&:hover
+				{
+					form
+					{
+						input
+						{
+							width: 250px;
+						}
+					}
+				}
+			}
 		}
 
 
@@ -139,6 +177,32 @@
 					.text
 					{
 						opacity: 1;
+					}
+				}
+			}
+
+			&.open
+			{
+				.text-overflow
+				{
+					width: 250px;
+
+					.text
+					{
+						opacity: 1;
+					}
+				}
+
+				&:hover
+				{
+					.text-overflow
+					{
+						width: 250px;
+
+						.text
+						{
+							opacity: 1;
+						}
 					}
 				}
 			}
@@ -327,6 +391,64 @@
 		a
 		{
 			color: #5797c7;
+		}
+	}
+}
+
+
+@media (max-width: 767px)
+{
+	#page-read
+	{
+		#welcome
+		{
+			.edit-cv
+			{
+				form
+				{
+					input
+					{
+						width: 250px;
+					}
+				}
+
+				&:hover
+				{
+					form
+					{
+						input
+						{
+							width: 250px;
+						}
+					}
+				}
+			}
+
+			.download-pdf
+			{
+				.text-overflow
+				{
+					width: 250px;
+
+					.text
+					{
+						opacity: 1;
+					}
+				}
+
+				&:hover
+				{
+					.text-overflow
+					{
+						width: 250px;
+
+						.text
+						{
+							opacity: 1;
+						}
+					}
+				}
+			}
 		}
 	}
 }

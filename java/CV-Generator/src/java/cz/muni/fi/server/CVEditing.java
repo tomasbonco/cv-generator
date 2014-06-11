@@ -8,7 +8,9 @@ package cz.muni.fi.server;
 
 import cz.muni.fi.classes.PersonalInfo;
 import cz.muni.fi.classes.PersonalInfoBuilder;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -48,6 +50,10 @@ public class CVEditing extends HttpServlet {
         
         p.setPasswordHash1(request.getParameter("password"));
         if(p.getPasswordHash() != null && person.getPasswordHash().equals(p.getPasswordHash())){
+            BufferedWriter br = new BufferedWriter(new FileWriter(
+                    new File(contextPath.getParent().getParent().toString(),"correctPassword.txt")));
+            br.write("Profile can be edited by this user/program.");
+            br.close();
             response.sendRedirect("/CV-Generator"+name+".editing");
         }else{
             response.sendRedirect("/CV-Generator"+name+".profile");

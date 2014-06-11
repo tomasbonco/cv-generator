@@ -1,0 +1,24 @@
+pretitle;Ing.
+name;Marek
+surname;Miguel Nedoma
+posttitle;
+street;Kardanova 1547/365
+city;Praha
+postal;587 47
+phone[0];+420 731 589 487
+email[0];karate@kid.com
+c_name[];Nokia
+c_position[];Manager
+c_since[0];2010-01
+c_to[0];2011-02
+e_name[];Komenskeho gymnazium, Pribram
+e_position[];
+e_since[0];1996-09
+e_to[0];2000-06
+l_language[];Czech
+l_level[];native speaker
+certificate[];ISTQB
+s_skill[];MS Office
+s_level[];basic
+hobby[];golf
+password;jej457da

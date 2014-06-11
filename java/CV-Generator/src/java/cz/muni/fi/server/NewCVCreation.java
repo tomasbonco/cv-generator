@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,43 +44,67 @@ public class NewCVCreation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
-        PersonalInfo person = new PersonalInfo(request.getParameterMap());        
+        request.setCharacterEncoding("UTF-8");       
         XMLRecordCreator xmlrc = new XMLRecordCreator();        
         Path cp = Paths.get(request.getServletContext().getRealPath(""));
         String contextPath = cp.getParent().getParent().toString();
-        String servletPath = request.getServletPath();        
+        String servletPath = request.getServletPath();
+        PersonalInfo person = null;
+        int personObjectCreated  = 0;
         
-        if(xmlrc.generateXML(person,contextPath) == true){
-            if(servletPath.endsWith(".modified") && servletPath.length() == 22){
-                File oldXmlFile = new File(contextPath+"/database"+servletPath.substring(0, 13)+".xml");
-                File oldPdfFile = new File(contextPath+"/pdf_database"+servletPath.substring(0, 13)+".pdf");
-                if(oldXmlFile.exists()){
-                    oldXmlFile.delete();
+        if(servletPath.endsWith("create-new-cv")){
+            person = new PersonalInfo(request.getParameterMap());
+            personObjectCreated = 1;
+        }        
+        if(servletPath.endsWith(".modified") && servletPath.length() == 22){
+            File f = new File(contextPath, "modif.txt");
+            if (f.exists() && f.isFile()) {
+                BufferedReader br = new BufferedReader(new FileReader(f));
+                if (br.readLine().equals("File was correctly modified.")) {
+                    File oldXmlFile = new File(contextPath + "/database" + servletPath.substring(0, 13) + ".xml");
+                    File oldPdfFile = new File(contextPath + "/pdf_database" + servletPath.substring(0, 13) + ".pdf");
+                    if (oldXmlFile.exists()) {
+                        oldXmlFile.delete();
+                    }
+                    if (oldPdfFile.exists()) {
+                        oldPdfFile.delete();
+                    }
+                    if (personObjectCreated == 0) {
+                        person = new PersonalInfo(request.getParameterMap());
+                        personObjectCreated = 1;
+                    }
+                    br.close();
+                    f.delete();
+                } else {
+                    response.sendRedirect("/CV-Generator" + servletPath.substring(0, 13) + ".profile");
                 }
-                if(oldPdfFile.exists()){
-                    oldPdfFile.delete();
-                }
+            } else {
+                response.sendRedirect("/CV-Generator" + servletPath.substring(0, 13) + ".profile");
             }
-            XSLTransformer xslt = new XSLTransformer();
-            xslt.transformToTex("xml_to_tex.xslt", person.getDateHash()+".xml", 
-                                person.getDateHash()+".tex",contextPath);
-            File texFile = new File(contextPath+"/pdf_database",person.getDateHash());
-            PDFfromLatexBuilder pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
-            pflb.createPDF(texFile);
-            File fOutToDelete = new File(texFile+".out");
-            File fTexToDelete = new File(texFile+".tex");
-            fOutToDelete.delete();
-            fTexToDelete.delete();
-            File invalidFile = new File(contextPath,"invalid.xml");
-            if(invalidFile.exists()){
-                invalidFile.delete();
-            }
-            response.sendRedirect(person.getDateHash()+".profile");
-        }else{            
-            response.sendRedirect("invalid_xml.jsp");            
         }
         
+        if(personObjectCreated == 1){
+            if(xmlrc.generateXML(person,contextPath) == true){
+
+                XSLTransformer xslt = new XSLTransformer();
+                xslt.transformToTex("xml_to_tex.xslt", person.getDateHash()+".xml", 
+                                    person.getDateHash()+".tex",contextPath);
+                File texFile = new File(contextPath+"/pdf_database",person.getDateHash());
+                PDFfromLatexBuilder pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
+                pflb.createPDF(texFile);
+                File fOutToDelete = new File(texFile+".out");
+                File fTexToDelete = new File(texFile+".tex");
+                fOutToDelete.delete();
+                fTexToDelete.delete();
+                File invalidFile = new File(contextPath,"invalid.xml");
+                if(invalidFile.exists()){
+                    invalidFile.delete();
+                }
+                response.sendRedirect(person.getDateHash()+".profile");
+            }else{            
+                response.sendRedirect("invalid_xml.jsp");            
+            }
+        }        
     }
     
     /**

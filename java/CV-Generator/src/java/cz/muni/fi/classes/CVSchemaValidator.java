@@ -129,6 +129,12 @@ public class CVSchemaValidator {
                 if(msg.contains("'typeTitle'")){
                     feName = "typeTitle.txt";
                 }
+                if(msg.contains("Attribute 'error' is not allowed to appear in element 'emp'.")){
+                    feName = "emplDateError.txt";
+                }
+                if(msg.contains("Attribute 'error' is not allowed to appear in element 'edu'.")){
+                    feName = "eduDateError.txt";
+                }
                 if(feName != null){
                     File fin = new File(this.contextPath+"/error_messages",feName);
                     BufferedReader br = new BufferedReader(new FileReader(fin));

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xml:id="final_report" xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <title>Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)</title>
+  <chapter xml:id="java_server2">
+     <section>
+       <title>Java server (part 2)</title>
+       <para>Řešitel: Bc. Jan Polišenský</para>
+       <para>Úloha: Java server</para>
+     </section>
+     <section>
+       <title>Řešení úlohy</title>
+       <para>...</para>
+     </section>
+  </chapter>
+</book>

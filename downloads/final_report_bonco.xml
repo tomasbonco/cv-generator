@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xml:id="final_report" xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <title>Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)</title>
+  <chapter xml:id="frontend">
+     <section>
+       <title>Frontend</title>
+       <para>Riešiteľ: Tomáš Bončo</para>
+       <para>Úloha: Frontend</para>
+     </section>
+     <section>
+       <title>Riešenie úlohy</title>
+       <para>...</para>
+     </section>
+  </chapter>
+</book>

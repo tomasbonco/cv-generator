@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cv>
+<passwd>f5b5d2239a28a033214c8d524940612c</passwd>
+<pretitle>Mgr.</pretitle>
+<firstname>Tomáš</firstname>
+<lastname>Šmíd</lastname>
+<posttitle>PhD.</posttitle>
+<address>
+<street>Ludovicka 1233/85</street>
+<city>Brno</city>
+<postal>74221</postal>
+</address>
+<phones>
+<phone>+420 155 155 201</phone>
+<phone>+420 101 548 458</phone>
+<phone>+420 154879787</phone>
+<phone>+455154478487</phone>
+</phones>
+<emails>
+<email>smid.thomas@gmail.com</email>
+<email>frederyk1.johan@centrum.cz</email>
+<email>frantahradsky@jeliman.cz</email>
+<email>pracefjh@gmail.com</email>
+<email>hello@gamil.com</email>
+</emails>
+<employment>
+<emp from="2010-09" name="Samsung" position="Programmer" to="2010-09"/>
+<emp from="2011-10" name="Samsung" position="Manager" to="2013-01"/>
+<emp from="2013-06" name="Nokia" position="Programmer" to=""/>
+</employment>
+<education>
+<edu field-of-study="Informatics" from="2006-09" name="Gymnazium Unicov" to=""/>
+<edu field-of-study="Informatics" from="2010-09" name="Stredni prumyslova skola Koprivnice" to="2013-12"/>
+</education>
+<languages>
+<lang level="intermediate" name="francouzský jazyk"/>
+<lang level="native speaker" name="Czech"/>
+<lang level="advanced" name="English"/>
+</languages>
+<certificates>
+<cer>Cisco</cer>
+<cer>Cisco CNNA</cer>
+<cer>FCI angličtina</cer>
+</certificates>
+<skills>
+<sk level="basic" name="Práce s xml"/>
+<sk level="intermediate" name="Microsoft Office"/>
+<sk level="advanced" name="Java"/>
+</skills>
+<hobbies>
+<hob>golf</hob>
+<hob>tennis</hob>
+<hob>pinec</hob>
+</hobbies>
+</cv>

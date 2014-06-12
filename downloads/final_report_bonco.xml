@@ -9,7 +9,7 @@
      </section>
      <section>
        <title>Riešenie úlohy</title>
-       <para>Mojou úlohou v tíme bolo navrhnúť a vytvoriť užívateľské prostredie. Prostredie, ktoré najskôr užívateľa privíta, potom mu umožní vytvoriť životopis a nakoniec mu umožní daný životopis vidieť. Na vypraccovanie tejto úlohy som využíval jazyky HTML, CSS a scriptovací jazyk JavaScript. Pre zjednodušenie vytvárania som tieto súbory písal v Jade, LESS, CoffeeScript.</para>
+       <para>Mojou úlohou v tíme bolo navrhnúť a vytvoriť užívateľské prostredie. Prostredie, ktoré najskôr užívateľa privíta, potom mu umožní vytvoriť životopis a nakoniec mu umožní daný životopis vidieť. Na vypracovanie tejto úlohy som využíval jazyky HTML, CSS a scriptovací jazyk JavaScript. Pre zjednodušenie vytvárania som tieto súbory písal v Jade, LESS a CoffeeScripte.</para>
        <para>Pri pripravovaní designu som sa zameral na jednoduchosť a intuitívnosť používania v modernom šate. Za týmto účelom som využil font Roboto. Veľkou pomocou mi bolo využitie Bootstrapu.</para>
        <para>Nakoľko som bol vedúcim projektu, pri vypracovaní projektu som sa snažil, aby sme stihli všetky kontrolne body v stanovenom rozsahu a čase. Ďalej som sa snažil, aby bola dodržaná kvalitívna stránka projektu.</para>       
      </section>

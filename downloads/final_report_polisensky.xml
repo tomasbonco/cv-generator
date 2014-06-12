@@ -9,7 +9,7 @@
      </section>
      <section>
        <title>Řešení úlohy</title>
-       <para>...</para>
+       <para>V průběhu práce na projektu jsem řešil generování PDF dokumentu z dodaného LaTeX souboru. Bylo potřebné vyřešit samotné spuštění prostředí LaTeX a také problémy s kódováním souboru. Dále jsem řešil načtení XML dokumentu s daty uživatele do pomocné datové struktury, která byla dále použita k vyplnění editačního formuláře a k vypsání informací o uživateli na stránce s jeho profilem.</para>
      </section>
   </chapter>
 </book>

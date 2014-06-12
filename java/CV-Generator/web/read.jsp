@@ -15,9 +15,9 @@
 <% Path contextPath = Paths.get(request.getServletContext().getRealPath(""));
    String name = request.getServletPath().toString().substring(0, 13);
    File xmlFile = new File(contextPath.getParent().getParent().toString()+"/database"+name+".xml");
-
-   PersonalInfoBuilder pib = new PersonalInfoBuilder();
-   PersonalInfo person = pib.newPersonalInfo(xmlFile);%>
+   if(xmlFile.exists()){
+    PersonalInfoBuilder pib = new PersonalInfoBuilder();
+    PersonalInfo person = pib.newPersonalInfo(xmlFile);%>
    
 <!DOCTYPE html>
 <html lang="en" ng-app>
@@ -165,3 +165,6 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+<% }else{
+       response.sendRedirect("index.html");
+   } %>

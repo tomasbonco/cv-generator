@@ -90,7 +90,17 @@ public class NewCVCreation extends HttpServlet {
                 xslt.transformToTex("xml_to_tex.xslt", person.getDateHash()+".xml", 
                                     person.getDateHash()+".tex",contextPath);
                 File texFile = new File(contextPath+"/pdf_database",person.getDateHash());
-                PDFfromLatexBuilder pflb = new PDFfromLatexBuilder("C:\\texlive\\2013\\bin\\win32\\");
+                File[] roots = File.listRoots();
+                String pathToTeXLive = null;
+                for (File root : roots) {
+                    String path = root.getName() + "/texlive/2013/bin/win32/";
+                    File f = new File(path);
+                    if(f.exists()){
+                        pathToTeXLive = path;
+                        break;
+                    }
+                }
+                PDFfromLatexBuilder pflb = new PDFfromLatexBuilder(pathToTeXLive);
                 pflb.createPDF(texFile);
                 File fOutToDelete = new File(texFile+".out");
                 File fTexToDelete = new File(texFile+".tex");

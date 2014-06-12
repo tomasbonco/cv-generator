@@ -57,8 +57,10 @@ public class XMLRecordCreatorTests {
     public void setUp() {
         PersonalInfo pi = setPersonalInfo();
         this.xmlrc = new XMLRecordCreator();
-        xmlrc.generateXML(pi, "C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator");
-        this.genXmlFile = new File("C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator\\database",pi.getDateHash()+".xml");
+        File f = new File("");
+        String path = f.getAbsolutePath();
+        xmlrc.generateXML(pi, path);
+        this.genXmlFile = new File(path+"/database",pi.getDateHash()+".xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db;
         try {
@@ -379,8 +381,10 @@ public class XMLRecordCreatorTests {
         empls.put(0, empl);
         pi.setEmployments(empls);
         XMLRecordCreator creator = new XMLRecordCreator();
-        creator.generateXML(pi, "C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator");
-        File xmlFile = new File("C:\\Users\\Tom\\Documents\\NetBeansProjects\\CV-Generator","invalid.xml");
+        File f = new File("");
+        String path = f.getAbsolutePath();
+        creator.generateXML(pi, path);
+        File xmlFile = new File(path,"invalid.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document document = null;
         DocumentBuilder db;

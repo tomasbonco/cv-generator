@@ -9,7 +9,12 @@
      </section>
      <section>
        <title>Řešení úlohy</title>
-       <para>...</para>
+       <para>Během vypracovávání projektu jsem měl za úkol zajistit získávání a zpracování dat z formuláře, který na html stránce vyplňuje uživatel. Za tímto účelem jsem vytvořil vlastní datovou strukturu, ve které jsou držena všechna data, která uživatel vyplnil, což umožňuje rychlejší, snadnější a přehlednější práci s těmito daty. Za zmínku jistě stojí fakt, že při naplňování této struktury se ze získaného hesla vytvoří hash pomocí hashovací funkce MD5, přičemž výsledný hash není zkracován a při získávání dat z html stránky je získán aktuální čas, ze kterého je také vytvořen hash a zkrácen na 12 znaků - tento hash je použit jako unikátní název pracovních souborů, ve kterých jsou drženy informace o daném uživateli. Ke každému hashi je přidávaná navíc ještě sůl.</para>
+       <para>Mým druhým úkolem bylo vytvořit ze získaných dat xml dokument, který jsem měl následně nechat zvalidovat. Za tímto účelem jsem tedy vytvořil i validátor, který ověřuje, že výsledný xml dokument je validní podle vytvořeného xml schématu. Byla použita funkcionalita Java DOM. Validní dokument získává unikátní název a je připraven pro transformaci, z nevalidního se načítají data do formuláře (aby uživatel mohl rychle najít a opravit chybný údaj) a je odstraněn.</para>
+       <para>Dále jsem měl na starosti převod xml dokumentu do formátu TeX podle vytvořené XSLT transformace. Proto byl vytvořen XSLT procesor, který tuto transformaci provádí.</para>
+       <para>Mým dalším úkolem bylo zajistit a nastavit směrování a základní řízení přístupu. Tedy bylo definováno, jak spolu mají jednotlivé komponenty aplikace spolupracovat a jak jsou propojeny, kdy se má co provést a co,kdo a kdy smí provádět(zajištěna základní úroveň ochrany - např. nikdo neoprávněný nemůže měnit údaje jiné osoby(pokud nezná unikátní link a heslo)).</para>
+       <para>Podílel jsem se i na editační části(vypsání již existujících dat o uživateli do formuláře) či výpis informací o uživateli na jeho stránce.</para>
+       <para>A nakonec ještě bylo třeba vyřešit samotný proces stahování pdf souboru (obsahujícího CV uživatele) ze stránek uživatele.</para>       
      </section>
   </chapter>
 </book>

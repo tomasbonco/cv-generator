@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Riešenie úlohy</TITLE
+><meta charset="UTF-8"><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE='Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)'
+HREF="index.html"><LINK
+REL="UP"
+HREF="c3.html"><LINK
+REL="PREVIOUS"
+HREF="c3.html"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c3.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. </TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="AEN8"
+>1.2. Riešenie úlohy</A
+></H1
+>
+       
+       <P
+>Mojou prvou úlohou bolo vytvoriť XML databázu, ktorá bude uchovávať všetky potrebné dáta užívateľov. Pôvodný plán bol použiť jeden XML súbor na uloženie dát všetkých užívateľov, neskôr sme sa však kvôli validácii a aj prehľadnosti rozhodli ukladať dáta jedného uživateľa do jedného XML súboru. To znamená, že pre každého užívateľa existuje separátny XML dokument. XML súbor je pomenovaný podľa vygenerovaného reťazca - hash (viď ďalšie kapitoly). Obsahuje všetky údaje konkrétneho životopisu vrátane hesla v šifrovanej podobe.
+       </P
+>
+       <P
+>V ďalšej fáze som sa venoval tvorbe XML Schémy, ktorá slúži na zvalidovanie obsahu XML dokumentu. Schéma popisuje presnú šruktúru databázového súboru a je navrhnutá tak, aby vyhovovala základným požiadavkám, ktoré sú kladené na jednotlivé údaje životopisu, ale zároveň, aby ošetrila všetky neštandardné a nevalidné vstupy (vrátane násobného použitia údajov, ktoré sa môžu nachádzať v dokumente najviac jeden krát). Na overenie správnosti XML Schémy som použil unit testy, konkrétne som testoval existenciu / neexistenciu všetkých elementov / atribútov, nekorektné naplnenie hodnôt pre všetky elementy / atribúty, a tiež testy na prázdnosť elementov / atribútov.
+       </P
+>
+       <P
+>Ďalšia časť mojej práce pozostávala z tvorby XSLT transformácie, ktorá má za úlohu previesť obsah XML dokumentu do formátu TeX. Ako štýl TeX dokumentu som zvolil triedu ECV – A fancy Curriculum Vitae class z webovej lokality http://ctan.org (The Comprehensive TeX Archive Network). Táto trieda poskytuje jednoduché prostredie pre vytvorenie tabuľkového životopisu, inšpirovaného európskym životopisom. Po úspešnej transformácii XML dokumentu na TeX dokument, nasleduje konverzia do PDF formátu (viď ďalšie kapitoly).
+       </P
+>
+     </DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c3.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c3.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

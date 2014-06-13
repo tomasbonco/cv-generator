@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Řešení úlohy</TITLE
+><meta charset="UTF-8"><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE='Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)'
+HREF="index.html"><LINK
+REL="UP"
+HREF="c3.html"><LINK
+REL="PREVIOUS"
+HREF="c3.html"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Záverečná správa z práce na projekte "CV generator" pre predmet Moderní značkovací jazyky a jejich aplikace (PB138)</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c3.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. </TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="AEN8"
+>1.2. Řešení úlohy</A
+></H1
+>
+       
+       <P
+>Během vypracovávání projektu jsem měl za úkol zajistit získávání a zpracování dat z formuláře, který na html stránce vyplňuje uživatel. Za tímto účelem jsem vytvořil vlastní datovou strukturu, ve které jsou držena všechna data, která uživatel vyplnil, což umožňuje rychlejší, snadnější a přehlednější práci s těmito daty. Za zmínku jistě stojí fakt, že při naplňování této struktury se ze získaného hesla vytvoří hash pomocí hashovací funkce MD5, přičemž výsledný hash není zkracován a při získávání dat z html stránky je získán aktuální čas, ze kterého je také vytvořen hash a zkrácen na 12 znaků - tento hash je použit jako unikátní název pracovních souborů, ve kterých jsou drženy informace o daném uživateli. Ke každému hashi je přidávaná navíc ještě sůl.</P
+>
+       <P
+>Mým druhým úkolem bylo vytvořit ze získaných dat xml dokument, který jsem měl následně nechat zvalidovat. Za tímto účelem jsem tedy vytvořil i validátor, který ověřuje, že výsledný xml dokument je validní podle vytvořeného xml schématu. Byla použita funkcionalita Java DOM. Validní dokument získává unikátní název a je připraven pro transformaci, z nevalidního se načítají data do formuláře (aby uživatel mohl rychle najít a opravit chybný údaj) a je odstraněn.</P
+>
+       <P
+>Dále jsem měl na starosti převod xml dokumentu do formátu TeX podle vytvořené XSLT transformace. Proto byl vytvořen XSLT procesor, který tuto transformaci provádí.</P
+>
+       <P
+>Mým dalším úkolem bylo zajistit a nastavit směrování a základní řízení přístupu. Tedy bylo definováno, jak spolu mají jednotlivé komponenty aplikace spolupracovat a jak jsou propojeny, kdy se má co provést a co,kdo a kdy smí provádět(zajištěna základní úroveň ochrany - např. nikdo neoprávněný nemůže měnit údaje jiné osoby(pokud nezná unikátní link a heslo)).</P
+>
+       <P
+>Podílel jsem se i na editační části(vypsání již existujících dat o uživateli do formuláře) či výpis informací o uživateli na jeho stránce.</P
+>
+       <P
+>A nakonec ještě bylo třeba vyřešit samotný proces stahování pdf souboru (obsahujícího CV uživatele) ze stránek uživatele.</P
+>
+       <P
+>Pro ověření správné funkčnosti datových struktur byly použity unit testy.</P
+>      
+     </DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c3.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c3.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

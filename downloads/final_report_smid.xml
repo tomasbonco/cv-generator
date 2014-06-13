@@ -14,7 +14,8 @@
        <para>Dále jsem měl na starosti převod xml dokumentu do formátu TeX podle vytvořené XSLT transformace. Proto byl vytvořen XSLT procesor, který tuto transformaci provádí.</para>
        <para>Mým dalším úkolem bylo zajistit a nastavit směrování a základní řízení přístupu. Tedy bylo definováno, jak spolu mají jednotlivé komponenty aplikace spolupracovat a jak jsou propojeny, kdy se má co provést a co,kdo a kdy smí provádět(zajištěna základní úroveň ochrany - např. nikdo neoprávněný nemůže měnit údaje jiné osoby(pokud nezná unikátní link a heslo)).</para>
        <para>Podílel jsem se i na editační části(vypsání již existujících dat o uživateli do formuláře) či výpis informací o uživateli na jeho stránce.</para>
-       <para>A nakonec ještě bylo třeba vyřešit samotný proces stahování pdf souboru (obsahujícího CV uživatele) ze stránek uživatele.</para>       
+       <para>A nakonec ještě bylo třeba vyřešit samotný proces stahování pdf souboru (obsahujícího CV uživatele) ze stránek uživatele.</para>
+       <para>Pro ověření správné funkčnosti datových struktur byly použity unit testy.</para>      
      </section>
   </chapter>
 </book>

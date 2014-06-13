@@ -1,5 +1,9 @@
 # CSS
 
+## Following code, makes sure that sections (HTML elements <section>)
+## have always at least size window (to create that presentation scrolling effect).
+## When window is resized, new height is calculated.
+
 set_section_height = ()->
 
 	window_height = $(window).height()
@@ -23,6 +27,9 @@ $(window).resize ()-> set_section_height()
 
 
 # Next-page
+
+## Following code makes sure, that clicking little arrow in black circle (.next-page)
+## at the bottom of the page will scroll the page to the next section.
 
 $('.next-page').click ()->
 

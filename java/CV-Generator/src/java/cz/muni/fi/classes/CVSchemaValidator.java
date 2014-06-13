@@ -20,7 +20,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
- * Java class for validating any xml document.
+ * Java class for an xml document validation.
  * 
  * @author Tomas Smid <smid.thomas at gmail.com>
  */
@@ -102,7 +102,13 @@ public class CVSchemaValidator {
         }
         return true;
     }
-    
+    /*
+     * This method finds why an xml document is not valid and create an overview,
+     * which will be used as an indicator for user for better, quicker and easier
+     * orientation during the correction phase. 
+     *
+     * @param msg   message about the validation error
+     */
     private void saveValidationError(String msg){
         if(this.contextPath != null && !this.contextPath.trim().equals("")){
             File fout = new File(this.contextPath,"validation_error.txt");

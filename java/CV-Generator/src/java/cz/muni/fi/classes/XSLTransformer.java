@@ -15,7 +15,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- * Java class for transformation xml file to tex file.
+ * Java class for xml file to tex file transformation.
  * 
  * @author Tomas Smid <smid.thomas at gmail.com>
  */
@@ -27,7 +27,7 @@ public class XSLTransformer {
      * @param xslFile   XSLT according to is processed the transformation
      * @param xmlFile   xml document which will be transformed to tex file
      * @param destFile  tex file, result of transformation
-     * @param contextPath
+     * @param contextPath   the contextPath of the running project - access path to the work files
      */
     public void transformToTex(String xslFile, String xmlFile, String destFile, String contextPath){
         

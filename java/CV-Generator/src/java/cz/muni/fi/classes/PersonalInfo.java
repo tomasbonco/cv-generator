@@ -66,7 +66,7 @@ public class PersonalInfo {
         this.dateHash = getDataHash(new Date().toString(),'d');
     }
     
-    /**
+    /*
      * This method is used for correct setting of any string values
      * (e.g. firstname, lastname, street).
      * 
@@ -85,7 +85,7 @@ public class PersonalInfo {
         return null;
     }
     
-    /**
+    /*
      * This method is used for correct setting of any list which is formed by
      * string values. So it is used for values which can repeatedly appear on
      * html page - cv form (e.g. phones, e-mails).
@@ -111,7 +111,7 @@ public class PersonalInfo {
         return dataList;
     }
     
-    /**
+    /*
      * This method is used for correct setting of languages and skills of person
      * who the information is connected to.
      * 
@@ -151,7 +151,7 @@ public class PersonalInfo {
         return dataMap;
     }
     
-    /**
+    /*
      * This method is used for correct setting of employment and education
      * values.
      * 
